@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"), url("StratosSkyeng.otf") format("opentype") tech(color-COLRv1), url("StratosSkyeng.otf") format("opentype"), url("StratosSkyeng.woff") format("woff");
+}
+body {
+  font-family: "StratosSkyeng";
+}
+
 * {
   margin: 0;
   padding: 0;
