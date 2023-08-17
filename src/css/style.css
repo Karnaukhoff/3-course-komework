@@ -1,6 +1,14 @@
+/*@font-face {
+    font-family: "StratosSkyeng";
+    src:
+      local("StratosSkyeng"),
+      url("StratosSkyeng.otf") format("opentype") tech(color-COLRv1),
+      url("StratosSkyeng.otf") format("opentype"),
+      url("StratosSkyeng.woff") format("woff");
+  }*/
 @font-face {
   font-family: "StratosSkyeng";
-  src: local("StratosSkyeng"), url("StratosSkyeng.otf") format("opentype") tech(color-COLRv1), url("StratosSkyeng.otf") format("opentype"), url("StratosSkyeng.woff") format("woff");
+  src: url("/fonts/stratosskyeng-regular.otf") format("truetype");
 }
 body {
   font-family: "StratosSkyeng";
@@ -33,6 +41,7 @@ body {
   color: #004980;
   width: 208px;
   height: 96px;
+  text-align: center;
 }
 .choice__container_levels {
   display: flex;
