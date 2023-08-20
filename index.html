@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3-rd course homework</title>
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div class="container">
         <div class="choice__container">
-            <h2 class="choice__container_name">Выбери 
-                сложность</h2>
-            <div class="choice__container_levels">
-                <div class="level level_1">1</div>
-                <div class="level level_2">2</div>
-                <div class="level level_3">3</div>
-            </div>
-            <button class="choice__container_button">Старт</button>
+            <p class="choice__container_name">Выбери 
+                сложность</p>
+                <div class="choice__container_levels">
+                    <input type="radio" id="radio1" name="radios" value="1" checked>
+                        <label for="radio1">1</label>
+                    <input type="radio" id="radio2" name="radios" value="2" checked>
+                        <label for="radio1">2</label>
+                    <input type="radio" id="radio3" name="radios" value="3" checked>
+                        <label for="radio1">3</label>
+                </div>
+            <input type="button" value="Старт" class="choice__container_button">
         </div>
     </div>
 </body>

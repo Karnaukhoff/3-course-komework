@@ -8,7 +8,7 @@
   }*/
 @font-face {
   font-family: "StratosSkyeng";
-  src: url("/fonts/stratosskyeng-regular.otf") format("truetype");
+  src: url("/fonts/stratosskyengweb-regular.woff2") format("woff2"), url("/fonts/stratosskyengweb-regular.woff") format("woff");
 }
 body {
   font-family: "StratosSkyeng";
@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  height: 774px;
+  height: 100vh;
   background: #004980;
   display: flex;
   justify-content: center;
@@ -42,12 +42,35 @@ body {
   width: 208px;
   height: 96px;
   text-align: center;
+  font-size: 40px;
+  margin-bottom: 60px;
 }
 .choice__container_levels {
   display: flex;
   flex-direction: row;
   gap: 10px;
   margin-bottom: 60px;
+}
+.choice__container_levels input[type=radio] {
+  display: none;
+}
+.choice__container_levels label {
+  width: 98px;
+  height: 98px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 9px;
+  cursor: pointer;
+  border: 1px solid #DAD0FF;
+  background-color: #fff;
+  border-radius: 12px;
+  color: #0080C1;
+  font-size: 64px;
+}
+.choice__container_levels label:hover {
+  background-color: #d0ffb7;
+  border: 1px solid #1CA92E;
 }
 .choice__container_button {
   background-color: #7AC100;
@@ -57,28 +80,8 @@ body {
   border: none;
   color: #FFFFFF;
   font-size: 24px;
+  font-family: "StratosSkyeng";
 }
 .choice__container_button:hover {
   transform: scale(1.05);
 }
-
-.level {
-  width: 98px;
-  height: 98px;
-  background-color: white;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #0080C1;
-  font-size: 64px;
-}
-.level_1:hover {
-  transform: scale(1.05);
-}
-.level_2:hover {
-  transform: scale(1.05);
-}
-.level_3:hover {
-  transform: scale(1.05);
-}/*# sourceMappingURL=style.css.map */
