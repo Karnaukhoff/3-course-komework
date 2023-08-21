@@ -1,11 +1,3 @@
-/*@font-face {
-    font-family: "StratosSkyeng";
-    src:
-      local("StratosSkyeng"),
-      url("StratosSkyeng.otf") format("opentype") tech(color-COLRv1),
-      url("StratosSkyeng.otf") format("opentype"),
-      url("StratosSkyeng.woff") format("woff");
-  }*/
 @font-face {
   font-family: "StratosSkyeng";
   src: url("/fonts/stratosskyengweb-regular.woff2") format("woff2"), url("/fonts/stratosskyengweb-regular.woff") format("woff");
@@ -67,6 +59,10 @@ body {
   border-radius: 12px;
   color: #0080C1;
   font-size: 64px;
+}
+.choice__container_levels input[type=radio]:checked + label {
+  background-color: #d0ffb7;
+  border: 1px solid #1CA92E;
 }
 .choice__container_levels label:hover {
   background-color: #d0ffb7;
