@@ -12,11 +12,11 @@ body {
 }
 
 .container {
-  height: 100vh;
+  min-height: 780px;
   background: #004980;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 25px;
 }
 
 .choice__container {
@@ -54,30 +54,90 @@ body {
   align-items: center;
   padding: 2px 9px;
   cursor: pointer;
-  border: 1px solid #DAD0FF;
+  border: 1px solid #dad0ff;
   background-color: #fff;
   border-radius: 12px;
-  color: #0080C1;
+  color: #0080c1;
   font-size: 64px;
 }
 .choice__container_levels input[type=radio]:checked + label {
   background-color: #d0ffb7;
-  border: 1px solid #1CA92E;
+  border: 1px solid #1ca92e;
 }
 .choice__container_levels label:hover {
   background-color: #d0ffb7;
-  border: 1px solid #1CA92E;
+  border: 1px solid #1ca92e;
 }
 .choice__container_button {
-  background-color: #7AC100;
+  background-color: #7ac100;
   width: 246px;
   height: 50px;
   border-radius: 12px;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 24px;
   font-family: "StratosSkyeng";
 }
 .choice__container_button:hover {
   transform: scale(1.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.header-time {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+.header-time-min-sec {
+  display: flex;
+  gap: 29px;
+  margin-left: 87px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-family: "StratosSkyeng";
+}
+.header-time-time {
+  display: flex;
+  color: #FFFFFF;
+  font-size: 64px;
+  font-family: "StratosSkyeng";
+}
+.header-time-button {
+  margin-top: 29px;
+  background-color: #7ac100;
+  width: 246px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: "StratosSkyeng";
+  margin-right: 100px;
+}
+.header-time-button:hover {
+  transform: scale(1.05);
+}
+
+.cards {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  width: 95px;
+  height: 133px;
+}
+
+.card-line {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
 }
