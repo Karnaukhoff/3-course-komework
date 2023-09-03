@@ -24,6 +24,7 @@ export function getPageChoiceLevel() {
 export function getPageGame(level) {
     console.log(level)
     document.getElementById("container").style.display = "block"
+    document.getElementById("container").style.height = "100%"
     page.innerHTML = `
     <div class="header">
         <section class="header-time">
@@ -40,6 +41,20 @@ export function getPageGame(level) {
     </div>
 
     <section class="cards hidden-cards">
+        <div class="first-line card-line">
+            <img src="/img/hidden-card.jpg" class="photo">
+            <img src="/img/hidden-card.jpg" class="photo">
+            <img src="/img/hidden-card.jpg" class="photo">
+            <img src="/img/hidden-card.jpg" class="photo">
+            <img src="/img/hidden-card.jpg" class="photo">
+            <img src="/img/hidden-card.jpg" class="photo">
+        </div>
+    </section>
+    `
+}
+
+/*
+<section class="cards hidden-cards">
         <div class="first-line card-line">
             <img src="/img/hidden-card.jpg" class="photo">
             <img src="/img/hidden-card.jpg" class="photo">
@@ -130,33 +145,6 @@ export function getPageGame(level) {
             <img src="/img/8 крести.jpg" class="photo">
             <img src="/img/7 крести.jpg" class="photo">
             <img src="/img/6 крести.jpg" class="photo">
-        </div>
-    </section>
-    `
-}
-
-
-/*
-<section class="hidden-cards">
-        <div class="first-line">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-            <img src="/img/hidden-card.png">
-        </div>
-        <div class="second-line">
-        
-        </div>
-        <div class="third-line">
-        
-        </div>
-        <div class="fourth-line">
-        
         </div>
     </section>
 */
