@@ -1,4 +1,4 @@
-import { currentLevel } from "./index.js"
+import { turned, turned2 } from "./turnCards.js"
 
 export let totalRandomCards = []
 
@@ -81,6 +81,43 @@ export const cards = [
     kresti6,
 ]
 
+export function getRow(row, way){
+    let min = 0
+    let max = 9
+    let line = ``
+    if (row === 2){
+        min = 9
+        max = 18
+    } else if (row === 3){
+        min = 18
+        max = 27
+    } else if (row === 4){
+        min = 27
+        max = 36
+    }
+    for (let i = min; i < max; i++){
+        if (way === "open"){
+            line += totalRandomCards[i]
+        }
+        else if (way === "hidden") {
+            line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
+        }
+        else if (way === "process") {
+            for (let j = 0; j < totalRandomCards.length; j++){
+                if (turned[j] === totalRandomCards[i] && !turned2.includes(totalRandomCards[i])){
+                    line += totalRandomCards[i]
+                    //turned2.push(totalRandomCards[i])
+                    break
+                }
+                else if (j === (totalRandomCards.length - 1)){
+                    line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
+                }
+            }
+        }
+    }
+    return line
+}
+
 export function getCards() {
     let randomCards1 = []
     for (let i = 0; i < 18; i++) {
@@ -110,140 +147,40 @@ export function getCards() {
             totalRandomCards.push(randomCards2[i/2])
         }
     }
-    function getRow(row){
-        let min = 0
-        let max = 9
-        let line = ``
-        if (row === 2){
-            min = 9
-            max = 18
-        } else if (row === 3){
-            min = 18
-            max = 27
-        } else if (row === 4){
-            min = 27
-            max = 36
-        }
-        for (let i = min; i < max; i++){
-            line += totalRandomCards[i]
-        }
-        return line
-    }
 
     return `
 <section class="cards">
     <div class="first-line card-line">
-        ${getRow(1)}
+        ${getRow(1, "open")}
     </div>
     <div class="second-line card-line">
-        ${getRow(2)}
+        ${getRow(2, "open")}
     </div>
     <div class="third-line card-line">
-        ${getRow(3)}
+        ${getRow(3, "open")}
     </div>
     <div class="fourth-line card-line">
-        ${getRow(4)}
+        ${getRow(4, "open")}
     </div>
 </section>
     `
 }
 
-/*export function getHiddenCards() {
+export function getHiddenCards() {
     return `
-    <section class="cards hidden-cards">
+    <section class="cards">
         <div class="first-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(0)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(1)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(2)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(3)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(4)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(5)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(6)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(7)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(8)">
+            ${getRow(1, "hidden")}
         </div>
         <div class="second-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(9)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(10)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(11)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(12)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(13)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(14)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(15)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(16)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(17)">
+            ${getRow(2, "hidden")}
         </div>
         <div class="third-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(18)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(19)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(20)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(21)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(22)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(23)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(24)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(25)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(26)">
+            ${getRow(3, "hidden")}
         </div>
         <div class="fourth-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(27)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(28)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(29)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(30)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(31)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(32)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(33)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(34)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(35)">
+            ${getRow(4, "hidden")}
         </div>
     </section>
-    `
-}*/
-
-/*
-    <section class="cards hidden-cards">
-        <div class="first-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(0)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(1)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(2)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(3)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(4)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(5)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(6)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(7)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(8)">
-        </div>
-        <div class="second-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(9)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(10)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(11)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(12)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(13)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(14)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(15)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(16)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(17)">
-        </div>
-        <div class="third-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(18)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(19)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(20)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(21)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(22)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(23)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(24)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(25)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(26)">
-        </div>
-        <div class="fourth-line card-line">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(27)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(28)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(29)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(30)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(31)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(32)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(33)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(34)">
-            <img src="/img/hidden-card.jpg" class="photo" onclick="turnCard(35)">
-        </div>
-    </section>
-*/
+        `
+}

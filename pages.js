@@ -1,7 +1,7 @@
-import { getCards, totalRandomCards } from "./cards.js"
+import { getCards, getHiddenCards, totalRandomCards } from "./cards.js"
+import { turnCard } from "./turnCards.js"
 
-//const page = document.querySelector(".container")
-const page = document.getElementById("items")
+export const page = document.querySelector(".container")
 
 export function getPageChoiceLevel() {
     page.innerHTML = `
@@ -24,39 +24,47 @@ export function getPageChoiceLevel() {
     document.getElementById("container").style.alignItems = "center"
 }
 
+export function head() {
+    return `
+<div class="header">
+    <section class="header-time">
+        <div class="header-time-min-sec">
+            <div class="header-time-min-sec__time">min</div>
+            <div class="header-time-min-sec__time"></div>
+            <div class="header-time-min-sec__time">sek</div>
+        </div>
+        <div class="header-time">
+            <div class="header-time-time" id="timer">00.00</div>
+        </div>
+    </section>
+    <button class="header-time-button">Начать заново</button>
+</div>
+    `
+}
+
 export function getPageGame() {
     document.getElementById("container").style.display = "block"
     //клики по картам
     page.innerHTML = `
-    <div class="header">
-        <section class="header-time">
-            <div class="header-time-min-sec">
-                <div class="header-time-min-sec__time">min</div>
-                <div class="header-time-min-sec__time"></div>
-                <div class="header-time-min-sec__time">sek</div>
-            </div>
-            <div class="header-time">
-                <div class="header-time-time" id="timer">00.00</div>
-            </div>
-        </section>
-        <button class="header-time-button">Начать заново</button>
-    </div>
+    ${head()}
     ${getCards()}
     `
     let randomCards = totalRandomCards
     console.log(randomCards)
 
     setTimeout(function () {
-        page.innerHTML = ``
-        document.getElementById("hiddens").style.display = "block"
+        page.innerHTML = `
+        ${head()}
+        ${getHiddenCards()}
+        `
+
+        const cards = document.querySelectorAll(".hidden")
+        console.log(cards)
+        for (const card of cards) {
+            card.addEventListener("click", () => {
+                turnCard(Number(card.attributes.index.value))
+            })
+        }
     }, 5000)
 
-
-    /*const cards = document.querySelectorAll(".hidden")
-    console.log(cards)
-    for (const card of cards) {
-        card.addEventListener("click", () => {
-            console.log("right!")
-        })
-    }*/
 }
