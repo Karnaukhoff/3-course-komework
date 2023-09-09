@@ -42,9 +42,8 @@ export function head() {
     `
 }
 
-export function getPageGame() {
+export function getPageGame(level) {
     document.getElementById("container").style.display = "block"
-    //клики по картам
     page.innerHTML = `
     ${head()}
     ${getCards()}
@@ -59,10 +58,9 @@ export function getPageGame() {
         `
 
         const cards = document.querySelectorAll(".hidden")
-        console.log(cards)
         for (const card of cards) {
             card.addEventListener("click", () => {
-                turnCard(Number(card.attributes.index.value))
+                turnCard(Number(card.attributes.index.value), level)
             })
         }
     }, 5000)

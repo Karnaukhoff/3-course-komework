@@ -1,4 +1,4 @@
-import { turned, turned2 } from "./turnCards.js"
+import { turned1, turned2 } from "./turnCards.js"
 
 export let totalRandomCards = []
 
@@ -103,14 +103,14 @@ export function getRow(row, way){
             line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
         }
         else if (way === "process") {
-            for (let j = 0; j < totalRandomCards.length; j++){
-                if (turned[j] === totalRandomCards[i] && !turned2.includes(totalRandomCards[i])){
+            if (turned2.includes(totalRandomCards[i]) && turned1.includes(totalRandomCards[i])){
+                line += totalRandomCards[i]
+            }
+            else {
+                if (turned1.includes(totalRandomCards[i]) && turned1.includes(i)){
                     line += totalRandomCards[i]
-                    //turned2.push(totalRandomCards[i])
-                    break
-                }
-                else if (j === (totalRandomCards.length - 1)){
-                    line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
+                } else {
+                    line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`   
                 }
             }
         }
