@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -16,17 +8,201 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   cards: () => (/* binding */ cards),\n/* harmony export */   getCards: () => (/* binding */ getCards),\n/* harmony export */   getHiddenCards: () => (/* binding */ getHiddenCards),\n/* harmony export */   getRow: () => (/* binding */ getRow),\n/* harmony export */   totalRandomCards: () => (/* binding */ totalRandomCards)\n/* harmony export */ });\n/* harmony import */ var _turnCards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./turnCards.js */ \"./turnCards.js\");\n\r\n\r\nlet totalRandomCards = []\r\n\r\nconst pikaT = `<img src=\"/img/туз пики.jpg\" class=\"photo\">`\r\nconst pikaK = `<img src=\"/img/король пики.jpg\" class=\"photo\">`\r\nconst pikaQ = `<img src=\"/img/дама пики.jpg\" class=\"photo\">`\r\nconst pikaJ = `<img src=\"/img/валет пики.jpg\" class=\"photo\">`\r\nconst pika10 = `<img src=\"/img/10 пики.jpg\" class=\"photo\">`\r\nconst pika9 = `<img src=\"/img/9 пики.jpg\" class=\"photo\">`\r\nconst pika8 = `<img src=\"/img/8 пики.jpg\" class=\"photo\">`\r\nconst pika7 = `<img src=\"/img/7 пики.jpg\" class=\"photo\">`\r\nconst pika6 = `<img src=\"/img/6 пики.jpg\" class=\"photo\">`\r\n\r\nconst chervT = `<img src=\"/img/туз черви.jpg\" class=\"photo\">`\r\nconst chervK = `<img src=\"/img/король черви.jpg\" class=\"photo\">`\r\nconst chervQ = `<img src=\"/img/дама черви.jpg\" class=\"photo\">`\r\nconst chervJ = `<img src=\"/img/валет черви.jpg\" class=\"photo\">`\r\nconst cherv10 = `<img src=\"/img/10 черви.jpg\" class=\"photo\">`\r\nconst cherv9 = `<img src=\"/img/9 черви.jpg\" class=\"photo\">`\r\nconst cherv8 = `<img src=\"/img/8 черви.jpg\" class=\"photo\">`\r\nconst cherv7 = `<img src=\"/img/7 черви.jpg\" class=\"photo\">`\r\nconst cherv6 = `<img src=\"/img/6 черви.jpg\" class=\"photo\">`\r\n\r\nconst bubniT = `<img src=\"/img/туз бубны.jpg\" class=\"photo\">`\r\nconst bubniK = `<img src=\"/img/король бубны.jpg\" class=\"photo\">`\r\nconst bubniQ = `<img src=\"/img/дама бубны.jpg\" class=\"photo\">`\r\nconst bubniJ = `<img src=\"/img/валет бубны.jpg\" class=\"photo\">`\r\nconst bubni10 = `<img src=\"/img/10 бубны.jpg\" class=\"photo\">`\r\nconst bubni9 = `<img src=\"/img/9 бубны.jpg\" class=\"photo\">`\r\nconst bubni8 = `<img src=\"/img/8 бубны.jpg\" class=\"photo\">`\r\nconst bubni7 = `<img src=\"/img/7 бубны.jpg\" class=\"photo\">`\r\nconst bubni6 = `<img src=\"/img/6 бубны.jpg\" class=\"photo\">`\r\n\r\nconst krestiT = `<img src=\"/img/туз крести.jpg\" class=\"photo\">`\r\nconst krestiK = `<img src=\"/img/король крести.jpg\" class=\"photo\">`\r\nconst krestiQ = `<img src=\"/img/дама крести.jpg\" class=\"photo\">`\r\nconst krestiJ = `<img src=\"/img/валет крести.jpg\" class=\"photo\">`\r\nconst kresti10 = `<img src=\"/img/10 крести.jpg\" class=\"photo\">`\r\nconst kresti9 = `<img src=\"/img/9 крести.jpg\" class=\"photo\">`\r\nconst kresti8 = `<img src=\"/img/8 крести.jpg\" class=\"photo\">`\r\nconst kresti7 = `<img src=\"/img/7 крести.jpg\" class=\"photo\">`\r\nconst kresti6 = `<img src=\"/img/6 крести.jpg\" class=\"photo\">`\r\n\r\nconst cards = [\r\n    pikaT,\r\n    pikaK,\r\n    pikaQ,\r\n    pikaJ,\r\n    pika10,\r\n    pika9,\r\n    pika8,\r\n    pika7,\r\n    pika6,\r\n    chervT,\r\n    chervK,\r\n    chervQ,\r\n    chervJ,\r\n    cherv10,\r\n    cherv9,\r\n    cherv8,\r\n    cherv7,\r\n    cherv6,\r\n    bubniT,\r\n    bubniK,\r\n    bubniQ,\r\n    bubniJ,\r\n    bubni10,\r\n    bubni9,\r\n    bubni8,\r\n    bubni7,\r\n    bubni6,\r\n    krestiT,\r\n    krestiK,\r\n    krestiQ,\r\n    krestiJ,\r\n    kresti10,\r\n    kresti9,\r\n    kresti8,\r\n    kresti7,\r\n    kresti6,\r\n]\r\n\r\nfunction getRow(row, way){\r\n    let min = 0\r\n    let max = 9\r\n    let line = ``\r\n    if (row === 2){\r\n        min = 9\r\n        max = 18\r\n    } else if (row === 3){\r\n        min = 18\r\n        max = 27\r\n    } else if (row === 4){\r\n        min = 27\r\n        max = 36\r\n    }\r\n    for (let i = min; i < max; i++){\r\n        if (way === \"open\"){\r\n            line += totalRandomCards[i]\r\n        }\r\n        else if (way === \"hidden\") {\r\n            line += `<img src=\"/img/hidden-card.jpg\" class=\"hidden\" index=\"${i}\"></img>`\r\n        }\r\n        else if (way === \"process\") {\r\n            if (_turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned2.includes(totalRandomCards[i]) && _turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i])){\r\n                line += totalRandomCards[i]\r\n            }\r\n            else {\r\n                if (_turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i]) && _turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(i)){\r\n                    line += totalRandomCards[i]\r\n                } else {\r\n                    line += `<img src=\"/img/hidden-card.jpg\" class=\"hidden\" index=\"${i}\"></img>`   \r\n                }\r\n            }\r\n        }\r\n    }\r\n    return line\r\n}\r\n\r\nfunction getCards() {\r\n    let randomCards1 = []\r\n    for (let i = 0; i < 18; i++) {\r\n        let index = Math.floor(Math.random() * 36)\r\n        if (randomCards1.includes(cards[index])) {\r\n            i--\r\n        } else {\r\n            randomCards1.push(cards[index])\r\n        }\r\n    }\r\n\r\n    let randomCards2 = []\r\n    for (let i = 0; i < 18; i++) {\r\n        let index = Math.floor(Math.random() * 18)\r\n        if (randomCards2.includes(randomCards1[index])) {\r\n            i--\r\n        } else {\r\n            randomCards2.push(randomCards1[index])\r\n        }\r\n    }\r\n\r\n    for (let i = 0; i < 36; i++){\r\n        if (i % 2 === 1){\r\n            totalRandomCards.push(randomCards1[i/2 - 0.5])\r\n        } \r\n        else {\r\n            totalRandomCards.push(randomCards2[i/2])\r\n        }\r\n    }\r\n\r\n    return `\r\n<section class=\"cards\">\r\n    <div class=\"first-line card-line\">\r\n        ${getRow(1, \"open\")}\r\n    </div>\r\n    <div class=\"second-line card-line\">\r\n        ${getRow(2, \"open\")}\r\n    </div>\r\n    <div class=\"third-line card-line\">\r\n        ${getRow(3, \"open\")}\r\n    </div>\r\n    <div class=\"fourth-line card-line\">\r\n        ${getRow(4, \"open\")}\r\n    </div>\r\n</section>\r\n    `\r\n}\r\n\r\nfunction getHiddenCards() {\r\n    return `\r\n    <section class=\"cards\">\r\n        <div class=\"first-line card-line\">\r\n            ${getRow(1, \"hidden\")}\r\n        </div>\r\n        <div class=\"second-line card-line\">\r\n            ${getRow(2, \"hidden\")}\r\n        </div>\r\n        <div class=\"third-line card-line\">\r\n            ${getRow(3, \"hidden\")}\r\n        </div>\r\n        <div class=\"fourth-line card-line\">\r\n            ${getRow(4, \"hidden\")}\r\n        </div>\r\n    </section>\r\n        `\r\n}\n\n//# sourceURL=webpack://3-course-komework/./cards.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   cards: () => (/* binding */ cards),
+/* harmony export */   getCards: () => (/* binding */ getCards),
+/* harmony export */   getHiddenCards: () => (/* binding */ getHiddenCards),
+/* harmony export */   getRow: () => (/* binding */ getRow),
+/* harmony export */   totalRandomCards: () => (/* binding */ totalRandomCards)
+/* harmony export */ });
+/* harmony import */ var _turnCards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./turnCards.js */ "./turnCards.js");
 
-/***/ }),
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+let totalRandomCards = []
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pages_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages.js */ \"./pages.js\");\n\r\n\r\n(0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageChoiceLevel)()\r\n\r\nconst startButton = document.getElementById(\"start-button\")\r\nstartButton.addEventListener(\"click\", () => {\r\n    if (document.getElementById(\"radio1\").checked) {\r\n        (0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(1)\r\n    } else if (document.getElementById(\"radio2\").checked) {\r\n        (0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(2)\r\n    } else if (document.getElementById(\"radio3\").checked) {\r\n        (0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(3)\r\n    } else {\r\n        alert(\"Выберите уровень\")\r\n    }\r\n})\r\n\n\n//# sourceURL=webpack://3-course-komework/./index.js?");
+const pikaT = `<img src="/img/туз пики.jpg" class="photo">`
+const pikaK = `<img src="/img/король пики.jpg" class="photo">`
+const pikaQ = `<img src="/img/дама пики.jpg" class="photo">`
+const pikaJ = `<img src="/img/валет пики.jpg" class="photo">`
+const pika10 = `<img src="/img/10 пики.jpg" class="photo">`
+const pika9 = `<img src="/img/9 пики.jpg" class="photo">`
+const pika8 = `<img src="/img/8 пики.jpg" class="photo">`
+const pika7 = `<img src="/img/7 пики.jpg" class="photo">`
+const pika6 = `<img src="/img/6 пики.jpg" class="photo">`
+
+const chervT = `<img src="/img/туз черви.jpg" class="photo">`
+const chervK = `<img src="/img/король черви.jpg" class="photo">`
+const chervQ = `<img src="/img/дама черви.jpg" class="photo">`
+const chervJ = `<img src="/img/валет черви.jpg" class="photo">`
+const cherv10 = `<img src="/img/10 черви.jpg" class="photo">`
+const cherv9 = `<img src="/img/9 черви.jpg" class="photo">`
+const cherv8 = `<img src="/img/8 черви.jpg" class="photo">`
+const cherv7 = `<img src="/img/7 черви.jpg" class="photo">`
+const cherv6 = `<img src="/img/6 черви.jpg" class="photo">`
+
+const bubniT = `<img src="/img/туз бубны.jpg" class="photo">`
+const bubniK = `<img src="/img/король бубны.jpg" class="photo">`
+const bubniQ = `<img src="/img/дама бубны.jpg" class="photo">`
+const bubniJ = `<img src="/img/валет бубны.jpg" class="photo">`
+const bubni10 = `<img src="/img/10 бубны.jpg" class="photo">`
+const bubni9 = `<img src="/img/9 бубны.jpg" class="photo">`
+const bubni8 = `<img src="/img/8 бубны.jpg" class="photo">`
+const bubni7 = `<img src="/img/7 бубны.jpg" class="photo">`
+const bubni6 = `<img src="/img/6 бубны.jpg" class="photo">`
+
+const krestiT = `<img src="/img/туз крести.jpg" class="photo">`
+const krestiK = `<img src="/img/король крести.jpg" class="photo">`
+const krestiQ = `<img src="/img/дама крести.jpg" class="photo">`
+const krestiJ = `<img src="/img/валет крести.jpg" class="photo">`
+const kresti10 = `<img src="/img/10 крести.jpg" class="photo">`
+const kresti9 = `<img src="/img/9 крести.jpg" class="photo">`
+const kresti8 = `<img src="/img/8 крести.jpg" class="photo">`
+const kresti7 = `<img src="/img/7 крести.jpg" class="photo">`
+const kresti6 = `<img src="/img/6 крести.jpg" class="photo">`
+
+const cards = [
+    pikaT,
+    pikaK,
+    pikaQ,
+    pikaJ,
+    pika10,
+    pika9,
+    pika8,
+    pika7,
+    pika6,
+    chervT,
+    chervK,
+    chervQ,
+    chervJ,
+    cherv10,
+    cherv9,
+    cherv8,
+    cherv7,
+    cherv6,
+    bubniT,
+    bubniK,
+    bubniQ,
+    bubniJ,
+    bubni10,
+    bubni9,
+    bubni8,
+    bubni7,
+    bubni6,
+    krestiT,
+    krestiK,
+    krestiQ,
+    krestiJ,
+    kresti10,
+    kresti9,
+    kresti8,
+    kresti7,
+    kresti6,
+]
+
+function getRow(row, way){
+    let min = 0
+    let max = 9
+    let line = ``
+    if (row === 2){
+        min = 9
+        max = 18
+    } else if (row === 3){
+        min = 18
+        max = 27
+    } else if (row === 4){
+        min = 27
+        max = 36
+    }
+    for (let i = min; i < max; i++){
+        if (way === "open"){
+            line += totalRandomCards[i]
+        }
+        else if (way === "hidden") {
+            line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
+        }
+        else if (way === "process") {
+            if (_turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned2.includes(totalRandomCards[i]) && _turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i])){
+                line += totalRandomCards[i]
+            }
+            else {
+                if (_turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i]) && _turnCards_js__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(i)){
+                    line += totalRandomCards[i]
+                } else {
+                    line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`   
+                }
+            }
+        }
+    }
+    return line
+}
+
+function getCards() {
+    let randomCards1 = []
+    for (let i = 0; i < 18; i++) {
+        let index = Math.floor(Math.random() * 36)
+        if (randomCards1.includes(cards[index])) {
+            i--
+        } else {
+            randomCards1.push(cards[index])
+        }
+    }
+
+    let randomCards2 = []
+    for (let i = 0; i < 18; i++) {
+        let index = Math.floor(Math.random() * 18)
+        if (randomCards2.includes(randomCards1[index])) {
+            i--
+        } else {
+            randomCards2.push(randomCards1[index])
+        }
+    }
+
+    for (let i = 0; i < 36; i++){
+        if (i % 2 === 1){
+            totalRandomCards.push(randomCards1[i/2 - 0.5])
+        } 
+        else {
+            totalRandomCards.push(randomCards2[i/2])
+        }
+    }
+
+    return `
+<section class="cards">
+    <div class="first-line card-line">
+        ${getRow(1, "open")}
+    </div>
+    <div class="second-line card-line">
+        ${getRow(2, "open")}
+    </div>
+    <div class="third-line card-line">
+        ${getRow(3, "open")}
+    </div>
+    <div class="fourth-line card-line">
+        ${getRow(4, "open")}
+    </div>
+</section>
+    `
+}
+
+function getHiddenCards() {
+    return `
+    <section class="cards">
+        <div class="first-line card-line">
+            ${getRow(1, "hidden")}
+        </div>
+        <div class="second-line card-line">
+            ${getRow(2, "hidden")}
+        </div>
+        <div class="third-line card-line">
+            ${getRow(3, "hidden")}
+        </div>
+        <div class="fourth-line card-line">
+            ${getRow(4, "hidden")}
+        </div>
+    </section>
+        `
+}
 
 /***/ }),
 
@@ -36,7 +212,84 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pag
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getPageChoiceLevel: () => (/* binding */ getPageChoiceLevel),\n/* harmony export */   getPageGame: () => (/* binding */ getPageGame),\n/* harmony export */   head: () => (/* binding */ head),\n/* harmony export */   page: () => (/* binding */ page)\n/* harmony export */ });\n/* harmony import */ var _cards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cards.js */ \"./cards.js\");\n/* harmony import */ var _turnCards_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./turnCards.js */ \"./turnCards.js\");\n\r\n\r\n\r\nconst page = document.querySelector(\".container\")\r\n\r\nfunction getPageChoiceLevel() {\r\n    page.innerHTML = `\r\n    <form class=\"choice__container\">\r\n        <p class=\"choice__container_name\">Выбери \r\n            сложность</p>\r\n            <div class=\"choice__container_levels\">\r\n                <input type=\"radio\" id=\"radio1\" class=\"radios\" value=\"1\" name=\"radios\">\r\n                    <label for=\"radio1\">1</label>\r\n                <input type=\"radio\" id=\"radio2\" class=\"radios\" value=\"2\" name=\"radios\">\r\n                    <label for=\"radio2\">2</label>\r\n                <input type=\"radio\" id=\"radio3\" class=\"radios\" value=\"3\" name=\"radios\">\r\n                    <label for=\"radio3\">3</label>\r\n            </div>\r\n        <button id=\"start-button\" class=\"choice__container_button\">Старт</button>\r\n    </form>\r\n        `\r\n    document.getElementById(\"container\").style.display = \"flex\"\r\n    document.getElementById(\"container\").style.justifyContent = \"center\"\r\n    document.getElementById(\"container\").style.alignItems = \"center\"\r\n}\r\n\r\nfunction head() {\r\n    return `\r\n<div class=\"header\">\r\n    <section class=\"header-time\">\r\n        <div class=\"header-time-min-sec\">\r\n            <div class=\"header-time-min-sec__time\">min</div>\r\n            <div class=\"header-time-min-sec__time\"></div>\r\n            <div class=\"header-time-min-sec__time\">sek</div>\r\n        </div>\r\n        <div class=\"header-time\">\r\n            <div class=\"header-time-time\" id=\"timer\">00.00</div>\r\n        </div>\r\n    </section>\r\n    <button class=\"header-time-button\">Начать заново</button>\r\n</div>\r\n    `\r\n}\r\n\r\nfunction getPageGame(level) {\r\n    document.getElementById(\"container\").style.display = \"block\"\r\n    page.innerHTML = `\r\n    ${head()}\r\n    ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getCards)()}\r\n    `\r\n    let randomCards = _cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards\r\n    console.log(randomCards)\r\n\r\n    setTimeout(function () {\r\n        page.innerHTML = `\r\n        ${head()}\r\n        ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getHiddenCards)()}\r\n        `\r\n\r\n        const cards = document.querySelectorAll(\".hidden\")\r\n        for (const card of cards) {\r\n            card.addEventListener(\"click\", () => {\r\n                ;(0,_turnCards_js__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes.index.value), level)\r\n            })\r\n        }\r\n    }, 5000)\r\n\r\n}\r\n\n\n//# sourceURL=webpack://3-course-komework/./pages.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getPageChoiceLevel: () => (/* binding */ getPageChoiceLevel),
+/* harmony export */   getPageGame: () => (/* binding */ getPageGame),
+/* harmony export */   head: () => (/* binding */ head),
+/* harmony export */   page: () => (/* binding */ page)
+/* harmony export */ });
+/* harmony import */ var _cards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cards.js */ "./cards.js");
+/* harmony import */ var _turnCards_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./turnCards.js */ "./turnCards.js");
+
+
+
+const page = document.querySelector(".container")
+
+function getPageChoiceLevel() {
+    page.innerHTML = `
+    <form class="choice__container">
+        <p class="choice__container_name">Выбери 
+            сложность</p>
+            <div class="choice__container_levels">
+                <input type="radio" id="radio1" class="radios" value="1" name="radios">
+                    <label for="radio1">1</label>
+                <input type="radio" id="radio2" class="radios" value="2" name="radios">
+                    <label for="radio2">2</label>
+                <input type="radio" id="radio3" class="radios" value="3" name="radios">
+                    <label for="radio3">3</label>
+            </div>
+        <button id="start-button" class="choice__container_button">Старт</button>
+    </form>
+        `
+    document.getElementById("container").style.display = "flex"
+    document.getElementById("container").style.justifyContent = "center"
+    document.getElementById("container").style.alignItems = "center"
+}
+
+function head() {
+    return `
+<div class="header">
+    <section class="header-time">
+        <div class="header-time-min-sec">
+            <div class="header-time-min-sec__time">min</div>
+            <div class="header-time-min-sec__time"></div>
+            <div class="header-time-min-sec__time">sek</div>
+        </div>
+        <div class="header-time">
+            <div class="header-time-time" id="timer">00.00</div>
+        </div>
+    </section>
+    <button class="header-time-button">Начать заново</button>
+</div>
+    `
+}
+
+function getPageGame(level) {
+    document.getElementById("container").style.display = "block"
+    page.innerHTML = `
+    ${head()}
+    ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getCards)()}
+    `
+    let randomCards = _cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards
+    console.log(randomCards)
+
+    setTimeout(function () {
+        page.innerHTML = `
+        ${head()}
+        ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getHiddenCards)()}
+        `
+
+        const cards = document.querySelectorAll(".hidden")
+        for (const card of cards) {
+            card.addEventListener("click", () => {
+                ;(0,_turnCards_js__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes.index.value), level)
+            })
+        }
+    }, 5000)
+
+}
+
 
 /***/ }),
 
@@ -46,7 +299,187 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   turnCard: () => (/* binding */ turnCard),\n/* harmony export */   turned1: () => (/* binding */ turned1),\n/* harmony export */   turned2: () => (/* binding */ turned2)\n/* harmony export */ });\n/* harmony import */ var _cards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cards.js */ \"./cards.js\");\n/* harmony import */ var _pages_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages.js */ \"./pages.js\");\n\r\n\r\n\r\nlet status = `won`\r\n\r\nlet turned1 = []\r\nlet turned2 = []\r\n\r\nlet pair1 = []\r\nlet pair2 = []\r\nlet pair3 = []\r\nlet pair4 = []\r\nlet pair5 = []\r\nlet pair6 = []\r\nlet pair7 = []\r\nlet pair8 = []\r\nlet pair9 = []\r\nlet pair10 = []\r\nlet pair11 = []\r\nlet pair12 = []\r\nlet pair13 = []\r\nlet pair14 = []\r\nlet pair15 = []\r\nlet pair16 = []\r\nlet pair17 = []\r\nlet pair18 = []\r\n\r\nfunction pairs(number, index) {\r\n    function lostMessage(){\r\n        setTimeout(() => alert('Вы проиграли!'), 1000)\r\n        status = `lost`\r\n    }\r\n    if (number <= 2 ){\r\n        pair1.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair1.length === 2 && pair1[0] !== pair1[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 4){\r\n        pair2.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair2.length === 2 && pair2[0] !== pair2[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 6){\r\n        pair3.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair3.length === 2 && pair3[0] !== pair3[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 8){\r\n        pair4.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair4.length === 2 && pair4[0] !== pair4[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 10){\r\n        pair5.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair5.length === 2 && pair5[0] !== pair5[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 12){\r\n        pair6.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair6.length === 2 && pair6[0] !== pair6[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 14){\r\n        pair7.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair7.length === 2 && pair7[0] !== pair7[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 16){\r\n        pair8.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair8.length === 2 && pair8[0] !== pair8[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 18){\r\n        pair9.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair9.length === 2 && pair9[0] !== pair9[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 20){\r\n        pair10.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair10.length === 2 && pair10[0] !== pair10[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 22){\r\n        pair11.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair11.length === 2 && pair11[0] !== pair11[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 24){\r\n        pair12.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair12.length === 2 && pair12[0] !== pair12[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 26){\r\n        pair13.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair13.length === 2 && pair13[0] !== pair13[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 28){\r\n        pair14.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair14.length === 2 && pair14[0] !== pair14[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 30){\r\n        pair15.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair15.length === 2 && pair15[0] !== pair15[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 32){\r\n        pair16.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair16.length === 2 && pair16[0] !== pair16[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 34){\r\n        pair17.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair17.length === 2 && pair17[0] !== pair17[1]){\r\n            lostMessage()\r\n        }\r\n    } else if (number <= 36){\r\n        pair18.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n        if (pair18.length === 2 && pair18[0] !== pair18[1]){\r\n            lostMessage()\r\n        }\r\n    }\r\n}\r\n\r\nfunction turnCard(index, level) {\r\n    let countOfCards = 12\r\n    if (level === 2) {\r\n        countOfCards = 24\r\n    } else if (level === 3) {\r\n        countOfCards = 36\r\n    }\r\n\r\n    if (!turned1.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]) || !turned2.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {\r\n        if (!turned1.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])){\r\n            turned1.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n            turned1.push(index)\r\n        } else {\r\n            turned2.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])\r\n            turned2.push(index)\r\n        }\r\n        let clickCardNumber = (turned1.length / 2) + (turned2.length / 2)\r\n        _pages_js__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = `\r\n        ${(0,_pages_js__WEBPACK_IMPORTED_MODULE_1__.head)()}\r\n        <section class=\"cards\">\r\n            <div class=\"first-line card-line\">\r\n                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, \"process\")}\r\n            </div>\r\n            <div class=\"second-line card-line\">\r\n                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, \"process\")}\r\n            </div>\r\n            <div class=\"third-line card-line\">\r\n                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(3, \"process\")}\r\n            </div>\r\n            <div class=\"fourth-line card-line\">\r\n                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(4, \"process\")}\r\n            </div>\r\n        </section>\r\n        `\r\n        pairs(clickCardNumber, index)\r\n        console.log(clickCardNumber, countOfCards)\r\n        if (clickCardNumber === countOfCards && status === `won`){\r\n        setTimeout(() => alert('Вы выиграли!'), 1000)\r\n        }\r\n\r\n        const cards = document.querySelectorAll(\".hidden\")\r\n        for (const card of cards) {\r\n            card.addEventListener(\"click\", () => {\r\n                turnCard(Number(card.attributes.index.value), level)\r\n            })\r\n        }\r\n    }\r\n}\n\n//# sourceURL=webpack://3-course-komework/./turnCards.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   turnCard: () => (/* binding */ turnCard),
+/* harmony export */   turned1: () => (/* binding */ turned1),
+/* harmony export */   turned2: () => (/* binding */ turned2)
+/* harmony export */ });
+/* harmony import */ var _cards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cards.js */ "./cards.js");
+/* harmony import */ var _pages_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages.js */ "./pages.js");
+
+
+
+let status = `won`
+
+let turned1 = []
+let turned2 = []
+
+let pair1 = []
+let pair2 = []
+let pair3 = []
+let pair4 = []
+let pair5 = []
+let pair6 = []
+let pair7 = []
+let pair8 = []
+let pair9 = []
+let pair10 = []
+let pair11 = []
+let pair12 = []
+let pair13 = []
+let pair14 = []
+let pair15 = []
+let pair16 = []
+let pair17 = []
+let pair18 = []
+
+function pairs(number, index) {
+    function lostMessage(){
+        setTimeout(() => alert('Вы проиграли!'), 1000)
+        status = `lost`
+    }
+    if (number <= 2 ){
+        pair1.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair1.length === 2 && pair1[0] !== pair1[1]){
+            lostMessage()
+        }
+    } else if (number <= 4){
+        pair2.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair2.length === 2 && pair2[0] !== pair2[1]){
+            lostMessage()
+        }
+    } else if (number <= 6){
+        pair3.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair3.length === 2 && pair3[0] !== pair3[1]){
+            lostMessage()
+        }
+    } else if (number <= 8){
+        pair4.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair4.length === 2 && pair4[0] !== pair4[1]){
+            lostMessage()
+        }
+    } else if (number <= 10){
+        pair5.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair5.length === 2 && pair5[0] !== pair5[1]){
+            lostMessage()
+        }
+    } else if (number <= 12){
+        pair6.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair6.length === 2 && pair6[0] !== pair6[1]){
+            lostMessage()
+        }
+    } else if (number <= 14){
+        pair7.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair7.length === 2 && pair7[0] !== pair7[1]){
+            lostMessage()
+        }
+    } else if (number <= 16){
+        pair8.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair8.length === 2 && pair8[0] !== pair8[1]){
+            lostMessage()
+        }
+    } else if (number <= 18){
+        pair9.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair9.length === 2 && pair9[0] !== pair9[1]){
+            lostMessage()
+        }
+    } else if (number <= 20){
+        pair10.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair10.length === 2 && pair10[0] !== pair10[1]){
+            lostMessage()
+        }
+    } else if (number <= 22){
+        pair11.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair11.length === 2 && pair11[0] !== pair11[1]){
+            lostMessage()
+        }
+    } else if (number <= 24){
+        pair12.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair12.length === 2 && pair12[0] !== pair12[1]){
+            lostMessage()
+        }
+    } else if (number <= 26){
+        pair13.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair13.length === 2 && pair13[0] !== pair13[1]){
+            lostMessage()
+        }
+    } else if (number <= 28){
+        pair14.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair14.length === 2 && pair14[0] !== pair14[1]){
+            lostMessage()
+        }
+    } else if (number <= 30){
+        pair15.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair15.length === 2 && pair15[0] !== pair15[1]){
+            lostMessage()
+        }
+    } else if (number <= 32){
+        pair16.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair16.length === 2 && pair16[0] !== pair16[1]){
+            lostMessage()
+        }
+    } else if (number <= 34){
+        pair17.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair17.length === 2 && pair17[0] !== pair17[1]){
+            lostMessage()
+        }
+    } else if (number <= 36){
+        pair18.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+        if (pair18.length === 2 && pair18[0] !== pair18[1]){
+            lostMessage()
+        }
+    }
+}
+
+function turnCard(index, level) {
+    let countOfCards = 12
+    if (level === 2) {
+        countOfCards = 24
+    } else if (level === 3) {
+        countOfCards = 36
+    }
+
+    if (!turned1.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]) || !turned2.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {
+        if (!turned1.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])){
+            turned1.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+            turned1.push(index)
+        } else {
+            turned2.push(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])
+            turned2.push(index)
+        }
+        let clickCardNumber = (turned1.length / 2) + (turned2.length / 2)
+        _pages_js__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = `
+        ${(0,_pages_js__WEBPACK_IMPORTED_MODULE_1__.head)()}
+        <section class="cards">
+            <div class="first-line card-line">
+                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, "process")}
+            </div>
+            <div class="second-line card-line">
+                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, "process")}
+            </div>
+            <div class="third-line card-line">
+                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(3, "process")}
+            </div>
+            <div class="fourth-line card-line">
+                ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getRow)(4, "process")}
+            </div>
+        </section>
+        `
+        pairs(clickCardNumber, index)
+        console.log(clickCardNumber, countOfCards)
+        if (clickCardNumber === countOfCards && status === `won`){
+        setTimeout(() => alert('Вы выиграли!'), 1000)
+        }
+
+        const cards = document.querySelectorAll(".hidden")
+        for (const card of cards) {
+            card.addEventListener("click", () => {
+                turnCard(Number(card.attributes.index.value), level)
+            })
+        }
+    }
+}
 
 /***/ })
 
@@ -106,11 +539,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./index.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _pages_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages.js */ "./pages.js");
+
+
+(0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageChoiceLevel)()
+
+const startButton = document.getElementById("start-button")
+startButton.addEventListener("click", () => {
+    if (document.getElementById("radio1").checked) {
+        (0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(1)
+    } else if (document.getElementById("radio2").checked) {
+        (0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(2)
+    } else if (document.getElementById("radio3").checked) {
+        (0,_pages_js__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(3)
+    } else {
+        alert("Выберите уровень")
+    }
+})
+
+})();
+
 /******/ })()
 ;
+//# sourceMappingURL=bundle.js.map

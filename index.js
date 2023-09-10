@@ -1,5 +1,4 @@
 import { getPageChoiceLevel, getPageGame } from "./pages.js"
-import "./style.css";
 
 getPageChoiceLevel()
 

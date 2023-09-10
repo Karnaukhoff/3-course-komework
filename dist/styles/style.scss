@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "StratosSkyeng";
+    src:
+        url("/fonts/stratosskyengweb-regular.woff2") format("woff2"),
+        url("/fonts/stratosskyengweb-regular.woff") format("woff");
+}
+body {
+    font-family: "StratosSkyeng";
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    height: 100vh;
+    background: #004980;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 25px;
+}
+.choice__container {
+    height: 459px;
+    width: 480px;
+    background-color: rgb(167, 249, 255);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &_name {
+        color: #004980;
+        width: 208px;
+        height: 96px;
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 60px;
+    }
+    &_levels {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 60px;
+    }
+    &_levels input[type="radio"] {
+        display: none;
+    }
+    &_levels label {
+        width: 98px;
+        height: 98px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px 9px;
+        cursor: pointer;
+        border: 1px solid #dad0ff;
+        background-color: #fff;
+        border-radius: 12px;
+        color: #0080c1;
+        font-size: 64px;
+    }
+    &_levels input[type="radio"]:checked + label {
+        background-color: #d0ffb7;
+        border: 1px solid #1ca92e;
+    }
+    &_levels label:hover {
+        background-color: #d0ffb7;
+        border: 1px solid #1ca92e;
+    }
+    &_button {
+        background-color: #7ac100;
+        width: 246px;
+        height: 50px;
+        border-radius: 12px;
+        border: none;
+        color: #ffffff;
+        font-size: 24px;
+        font-family: "StratosSkyeng";
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.header-time{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    &-min-sec{
+        display: flex;
+        gap: 29px;
+        margin-left: 87px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-family: "StratosSkyeng";
+    }
+    &-time{
+        display: flex;
+        color: #FFFFFF;
+        font-size: 64px;
+        font-family: "StratosSkyeng";
+    }
+    &-button{
+        margin-top: 29px;
+        background-color: #7ac100;
+        width: 246px;
+        height: 50px;
+        border-radius: 12px;
+        border: none;
+        color: #ffffff;
+        font-size: 24px;
+        font-family: "StratosSkyeng";
+        margin-right: 100px;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+.cards{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.photo{
+    width: 95px;
+    height: 133px;
+}
+.card-line{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
