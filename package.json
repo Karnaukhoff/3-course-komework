@@ -7,6 +7,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "html-webpack-plugin": "^5.5.3",
     "husky": "^8.0.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.0.2",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
@@ -106,13 +107,18 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint.js": "eslint ./**/*.js",
-    "lint:css": "stylelint './src/**.css'",
+    "lint:js": "eslint *.js",
+    "lint:scss": "stylelint *.scss",
     "lint": "npm run lint:js && npm run lint:css",
     "prepare": "husky install",
-    "build": "NODE_ENV=production webpack",
+    "build": "webpack",
     "start": "webpack-dev-server --open"
   },
+  "use": [
+    "MiniCssExtractPlugin.loader",
+    "css-loader",
+    "sass-loader"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
