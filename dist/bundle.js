@@ -433,11 +433,11 @@ function pairs(number, index) {
 }
 
 function turnCard(index, level) {
-    let countOfCards = 12
+    let countOfCards = 6
     if (level === 2) {
-        countOfCards = 24
+        countOfCards = 12
     } else if (level === 3) {
-        countOfCards = 36
+        countOfCards = 18
     }
 
     if (!turned1.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]) || !turned2.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {
