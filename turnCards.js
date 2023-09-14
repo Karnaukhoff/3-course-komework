@@ -1,10 +1,17 @@
 import { getRow, totalRandomCards } from "./cards.js"
-import { page, head } from "./pages.js"
+import { page, head, seconds, minutes } from "./pages.js"
 
 let status = `won`
 
 export let turned1 = []
 export let turned2 = []
+
+export function eraseTurned1(){
+    turned1 = []
+}
+export function eraseTurned2(){
+    turned2 = []
+}
 
 let pair1 = []
 let pair2 = []
@@ -24,6 +31,27 @@ let pair15 = []
 let pair16 = []
 let pair17 = []
 let pair18 = []
+
+export function erasePairs(){
+    let pair1 = []
+    let pair2 = []
+    let pair3 = []
+    let pair4 = []
+    let pair5 = []
+    let pair6 = []
+    let pair7 = []
+    let pair8 = []
+    let pair9 = []
+    let pair10 = []
+    let pair11 = []
+    let pair12 = []
+    let pair13 = []
+    let pair14 = []
+    let pair15 = []
+    let pair16 = []
+    let pair17 = []
+    let pair18 = []
+}
 
 function pairs(number, index) {
     function lostMessage(){
@@ -124,11 +152,11 @@ function pairs(number, index) {
 }
 
 export function turnCard(index, level) {
-    let countOfCards = 6
+    let cardsToWin = 6
     if (level === 2) {
-        countOfCards = 12
+        cardsToWin = 12
     } else if (level === 3) {
-        countOfCards = 18
+        cardsToWin = 18
     }
 
     if (!turned1.includes(totalRandomCards[index]) || !turned2.includes(totalRandomCards[index])) {
@@ -157,12 +185,27 @@ export function turnCard(index, level) {
             </div>
         </section>
         `
+        let timer = document.getElementById("timer");
+        
+        let sec = seconds
+        let min = minutes
+        let int;
+
+        function updateTime() {
+            sec++;
+            if (sec === 60) {
+                min++;
+                sec = 0;
+            }
+            timer.textContent = `${min.toString().padStart(2, '0')}.${sec.toString().padStart(2, '0')}`;
+            }
+        int = setInterval(updateTime, 1000);
         pairs(clickCardNumber, index)
-        console.log(clickCardNumber, countOfCards)
-        if (clickCardNumber === countOfCards && status === `won`){
+
+        if (clickCardNumber === cardsToWin && status === `won`){
         setTimeout(() => alert('Вы выиграли!'), 1000)
         }
-
+        //clearInterval(interval)
         const cards = document.querySelectorAll(".hidden")
         for (const card of cards) {
             card.addEventListener("click", () => {

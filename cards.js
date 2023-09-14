@@ -1,6 +1,9 @@
 import { turned1, turned2 } from "./turnCards.js"
 
 export let totalRandomCards = []
+export function eraseRandomCards() {
+    totalRandomCards = []
+}
 
 const pikaT = `<img src="/img/туз пики.jpg" class="photo">`
 const pikaK = `<img src="/img/король пики.jpg" class="photo">`

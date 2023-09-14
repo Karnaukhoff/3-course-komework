@@ -11,6 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   cards: () => (/* binding */ cards),
+/* harmony export */   eraseRandomCards: () => (/* binding */ eraseRandomCards),
 /* harmony export */   getCards: () => (/* binding */ getCards),
 /* harmony export */   getHiddenCards: () => (/* binding */ getHiddenCards),
 /* harmony export */   getRow: () => (/* binding */ getRow),
@@ -20,6 +21,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let totalRandomCards = []
+function eraseRandomCards() {
+    totalRandomCards = []
+}
 
 const pikaT = `<img src="/img/туз пики.jpg" class="photo">`
 const pikaK = `<img src="/img/король пики.jpg" class="photo">`
@@ -217,17 +221,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getPageChoiceLevel: () => (/* binding */ getPageChoiceLevel),
 /* harmony export */   getPageGame: () => (/* binding */ getPageGame),
 /* harmony export */   head: () => (/* binding */ head),
-/* harmony export */   page: () => (/* binding */ page)
+/* harmony export */   minutes: () => (/* binding */ minutes),
+/* harmony export */   page: () => (/* binding */ page),
+/* harmony export */   realTime: () => (/* binding */ realTime),
+/* harmony export */   seconds: () => (/* binding */ seconds)
 /* harmony export */ });
 /* harmony import */ var _cards_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cards.js */ "./cards.js");
 /* harmony import */ var _turnCards_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./turnCards.js */ "./turnCards.js");
 
 
 
-const page = document.querySelector(".container")
+const page = document.querySelector(".container");
 
 function getPageChoiceLevel() {
-    page.innerHTML = `
+  page.innerHTML = `
     <form class="choice__container">
         <p class="choice__container_name">Выбери 
             сложность</p>
@@ -241,14 +248,22 @@ function getPageChoiceLevel() {
             </div>
         <button id="start-button" class="choice__container_button">Старт</button>
     </form>
-        `
-    document.getElementById("container").style.display = "flex"
-    document.getElementById("container").style.justifyContent = "center"
-    document.getElementById("container").style.alignItems = "center"
+        `;
+  document.getElementById("container").style.display = "flex";
+  document.getElementById("container").style.justifyContent = "center";
+  document.getElementById("container").style.alignItems = "center";
 }
 
+let seconds;
+let minutes;
+
+function realTime() {
+    return `${minutes.toString().padStart(2, '0')}.${seconds.toString().padStart(2, '0')}`;
+}
+
+
 function head() {
-    return `
+  return `
 <div class="header">
     <section class="header-time">
         <div class="header-time-min-sec">
@@ -257,37 +272,56 @@ function head() {
             <div class="header-time-min-sec__time">sek</div>
         </div>
         <div class="header-time">
-            <div class="header-time-time" id="timer">00.00</div>
+            <div class="header-time-time" id="timer">${realTime()}</div>
         </div>
     </section>
-    <button class="header-time-button">Начать заново</button>
+    <button class="header-time-button" id="playAgainButton">Начать заново</button>
 </div>
-    `
+    `;
 }
 
 function getPageGame(level) {
-    document.getElementById("container").style.display = "block"
-    page.innerHTML = `
+  let interval;
+  seconds = 0;
+  minutes = 0;
+  document.getElementById("container").style.display = "block";
+  page.innerHTML = `
     ${head()}
     ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getCards)()}
-    `
-    let randomCards = _cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards
-    console.log(randomCards)
+    `;
 
-    setTimeout(function () {
-        page.innerHTML = `
+  //let randomCards = totalRandomCards;
+
+  setTimeout(function () {
+    page.innerHTML = `
         ${head()}
         ${(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.getHiddenCards)()}
-        `
-
-        const cards = document.querySelectorAll(".hidden")
-        for (const card of cards) {
-            card.addEventListener("click", () => {
-                ;(0,_turnCards_js__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes.index.value), level)
-            })
+        `;
+    let timer = document.getElementById("timer");
+        
+    function updateTime() {
+        seconds++;
+        if (seconds === 60) {
+            minutes++;
+            seconds = 0;
         }
-    }, 5000)
+        timer.textContent = `${minutes.toString().padStart(2, '0')}.${seconds.toString().padStart(2, '0')}`;
+        }
+    interval = setInterval(updateTime, 1000);
+    const cards = document.querySelectorAll(".hidden");
 
+    for (const card of cards) {
+      card.addEventListener("click", () => {
+        (0,_turnCards_js__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes.index.value), level);
+      });
+    let playAgainButton = document.getElementById("playAgainButton")
+    playAgainButton.addEventListener("click", () => {
+      clearInterval(interval)
+      ;(0,_cards_js__WEBPACK_IMPORTED_MODULE_0__.eraseRandomCards)()
+      getPageGame(level)
+    })
+    }
+  }, 5000);
 }
 
 
@@ -301,6 +335,9 @@ function getPageGame(level) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   erasePairs: () => (/* binding */ erasePairs),
+/* harmony export */   eraseTurned1: () => (/* binding */ eraseTurned1),
+/* harmony export */   eraseTurned2: () => (/* binding */ eraseTurned2),
 /* harmony export */   turnCard: () => (/* binding */ turnCard),
 /* harmony export */   turned1: () => (/* binding */ turned1),
 /* harmony export */   turned2: () => (/* binding */ turned2)
@@ -314,6 +351,13 @@ let status = `won`
 
 let turned1 = []
 let turned2 = []
+
+function eraseTurned1(){
+    turned1 = []
+}
+function eraseTurned2(){
+    turned2 = []
+}
 
 let pair1 = []
 let pair2 = []
@@ -333,6 +377,27 @@ let pair15 = []
 let pair16 = []
 let pair17 = []
 let pair18 = []
+
+function erasePairs(){
+    let pair1 = []
+    let pair2 = []
+    let pair3 = []
+    let pair4 = []
+    let pair5 = []
+    let pair6 = []
+    let pair7 = []
+    let pair8 = []
+    let pair9 = []
+    let pair10 = []
+    let pair11 = []
+    let pair12 = []
+    let pair13 = []
+    let pair14 = []
+    let pair15 = []
+    let pair16 = []
+    let pair17 = []
+    let pair18 = []
+}
 
 function pairs(number, index) {
     function lostMessage(){
@@ -433,11 +498,11 @@ function pairs(number, index) {
 }
 
 function turnCard(index, level) {
-    let countOfCards = 6
+    let cardsToWin = 6
     if (level === 2) {
-        countOfCards = 12
+        cardsToWin = 12
     } else if (level === 3) {
-        countOfCards = 18
+        cardsToWin = 18
     }
 
     if (!turned1.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]) || !turned2.includes(_cards_js__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {
@@ -466,12 +531,27 @@ function turnCard(index, level) {
             </div>
         </section>
         `
+        let timer = document.getElementById("timer");
+        
+        let sec = _pages_js__WEBPACK_IMPORTED_MODULE_1__.seconds
+        let min = _pages_js__WEBPACK_IMPORTED_MODULE_1__.minutes
+        let int;
+
+        function updateTime() {
+            sec++;
+            if (sec === 60) {
+                min++;
+                sec = 0;
+            }
+            timer.textContent = `${min.toString().padStart(2, '0')}.${sec.toString().padStart(2, '0')}`;
+            }
+        int = setInterval(updateTime, 1000);
         pairs(clickCardNumber, index)
-        console.log(clickCardNumber, countOfCards)
-        if (clickCardNumber === countOfCards && status === `won`){
+
+        if (clickCardNumber === cardsToWin && status === `won`){
         setTimeout(() => alert('Вы выиграли!'), 1000)
         }
-
+        //clearInterval(interval)
         const cards = document.querySelectorAll(".hidden")
         for (const card of cards) {
             card.addEventListener("click", () => {
@@ -564,6 +644,8 @@ startButton.addEventListener("click", () => {
     }
 })
 
+//окно выиграл/проиграл
+//функционал кнопки "начать заново"
 })();
 
 /******/ })()
