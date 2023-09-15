@@ -57,7 +57,7 @@ export function getPageGame(level) {
   document.getElementById("container").style.display = "block";
   page.innerHTML = `
     ${head()}
-    ${getCards()}
+    ${getCards(level)}
     `;
 
   //let randomCards = totalRandomCards;
@@ -78,18 +78,19 @@ export function getPageGame(level) {
         timer.textContent = `${minutes.toString().padStart(2, '0')}.${seconds.toString().padStart(2, '0')}`;
         }
     interval = setInterval(updateTime, 1000);
-    const cards = document.querySelectorAll(".hidden");
 
+    
+    const cards = document.querySelectorAll(".hidden");
     for (const card of cards) {
       card.addEventListener("click", () => {
         turnCard(Number(card.attributes.index.value), level);
       });
-    let playAgainButton = document.getElementById("playAgainButton")
-    playAgainButton.addEventListener("click", () => {
-      clearInterval(interval)
-      eraseRandomCards()
-      getPageGame(level)
-    })
     }
   }, 5000);
+  /*let playAgainButton = document.getElementById("playAgainButton")
+  playAgainButton.addEventListener("click", () => {
+    clearInterval(interval)
+    eraseRandomCards()
+    getPageGame(level)
+    })*/
 }

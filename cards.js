@@ -4,6 +4,7 @@ export let totalRandomCards = []
 export function eraseRandomCards() {
     totalRandomCards = []
 }
+export let watch = []
 
 const pikaT = `<img src="/img/туз пики.jpg" class="photo">`
 const pikaK = `<img src="/img/король пики.jpg" class="photo">`
@@ -100,7 +101,10 @@ export function getRow(row, way){
     }
     for (let i = min; i < max; i++){
         if (way === "open"){
-            line += totalRandomCards[i]
+            if (watch.includes(totalRandomCards[i])){
+                line += totalRandomCards[i]
+            }
+            else { line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img> `}
         }
         else if (way === "hidden") {
             line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
@@ -121,7 +125,7 @@ export function getRow(row, way){
     return line
 }
 
-export function getCards() {
+export function getCards(level) {
     let randomCards1 = []
     for (let i = 0; i < 18; i++) {
         let index = Math.floor(Math.random() * 36)
@@ -151,6 +155,18 @@ export function getCards() {
         }
     }
 
+    let until = 3
+    if (level === 2){
+        until = 6
+    } else if (level === 3){
+        until = 9
+    }
+
+    for (let i = 0; i < until; i++){
+        watch.push(randomCards1[i*2])
+
+    }
+    console.log(watch, until)
     return `
 <section class="cards">
     <div class="first-line card-line">

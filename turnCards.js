@@ -1,4 +1,4 @@
-import { getRow, totalRandomCards } from "./cards.js"
+import { getRow, totalRandomCards, watch } from "./cards.js"
 import { page, head, seconds, minutes } from "./pages.js"
 
 let status = `won`
@@ -53,11 +53,12 @@ export function erasePairs(){
     let pair18 = []
 }
 
+function lostMessage(){
+    setTimeout(() => alert('Вы проиграли!'), 1000)
+    status = `lost`
+}
+
 function pairs(number, index) {
-    function lostMessage(){
-        setTimeout(() => alert('Вы проиграли!'), 1000)
-        status = `lost`
-    }
     if (number <= 2 ){
         pair1.push(totalRandomCards[index])
         if (pair1.length === 2 && pair1[0] !== pair1[1]){
@@ -202,6 +203,9 @@ export function turnCard(index, level) {
         int = setInterval(updateTime, 1000);
         pairs(clickCardNumber, index)
 
+        if (!watch.includes(totalRandomCards[index])){
+            lostMessage()
+        }
         if (clickCardNumber === cardsToWin && status === `won`){
         setTimeout(() => alert('Вы выиграли!'), 1000)
         }
@@ -212,5 +216,7 @@ export function turnCard(index, level) {
                 turnCard(Number(card.attributes.index.value), level)
             })
         }
+    } else {
+        lostMessage()
     }
 }
