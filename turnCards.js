@@ -22,15 +22,6 @@ let pair6 = []
 let pair7 = []
 let pair8 = []
 let pair9 = []
-let pair10 = []
-let pair11 = []
-let pair12 = []
-let pair13 = []
-let pair14 = []
-let pair15 = []
-let pair16 = []
-let pair17 = []
-let pair18 = []
 
 export function erasePairs(){
     let pair1 = []
@@ -42,15 +33,6 @@ export function erasePairs(){
     let pair7 = []
     let pair8 = []
     let pair9 = []
-    let pair10 = []
-    let pair11 = []
-    let pair12 = []
-    let pair13 = []
-    let pair14 = []
-    let pair15 = []
-    let pair16 = []
-    let pair17 = []
-    let pair18 = []
 }
 
 function lostMessage(){
@@ -104,51 +86,6 @@ function pairs(number, index) {
         if (pair9.length === 2 && pair9[0] !== pair9[1]){
             lostMessage()
         }
-    } else if (number <= 20){
-        pair10.push(totalRandomCards[index])
-        if (pair10.length === 2 && pair10[0] !== pair10[1]){
-            lostMessage()
-        }
-    } else if (number <= 22){
-        pair11.push(totalRandomCards[index])
-        if (pair11.length === 2 && pair11[0] !== pair11[1]){
-            lostMessage()
-        }
-    } else if (number <= 24){
-        pair12.push(totalRandomCards[index])
-        if (pair12.length === 2 && pair12[0] !== pair12[1]){
-            lostMessage()
-        }
-    } else if (number <= 26){
-        pair13.push(totalRandomCards[index])
-        if (pair13.length === 2 && pair13[0] !== pair13[1]){
-            lostMessage()
-        }
-    } else if (number <= 28){
-        pair14.push(totalRandomCards[index])
-        if (pair14.length === 2 && pair14[0] !== pair14[1]){
-            lostMessage()
-        }
-    } else if (number <= 30){
-        pair15.push(totalRandomCards[index])
-        if (pair15.length === 2 && pair15[0] !== pair15[1]){
-            lostMessage()
-        }
-    } else if (number <= 32){
-        pair16.push(totalRandomCards[index])
-        if (pair16.length === 2 && pair16[0] !== pair16[1]){
-            lostMessage()
-        }
-    } else if (number <= 34){
-        pair17.push(totalRandomCards[index])
-        if (pair17.length === 2 && pair17[0] !== pair17[1]){
-            lostMessage()
-        }
-    } else if (number <= 36){
-        pair18.push(totalRandomCards[index])
-        if (pair18.length === 2 && pair18[0] !== pair18[1]){
-            lostMessage()
-        }
     }
 }
 
@@ -173,16 +110,10 @@ export function turnCard(index, level) {
         ${head()}
         <section class="cards">
             <div class="first-line card-line">
-                ${getRow(1, "process")}
+                ${getRow(1, "process", level)}
             </div>
             <div class="second-line card-line">
-                ${getRow(2, "process")}
-            </div>
-            <div class="third-line card-line">
-                ${getRow(3, "process")}
-            </div>
-            <div class="fourth-line card-line">
-                ${getRow(4, "process")}
+                ${getRow(2, "process", level)}
             </div>
         </section>
         `
@@ -202,10 +133,7 @@ export function turnCard(index, level) {
             }
         int = setInterval(updateTime, 1000);
         pairs(clickCardNumber, index)
-
-        if (!watch.includes(totalRandomCards[index])){
-            lostMessage()
-        }
+        
         if (clickCardNumber === cardsToWin && status === `won`){
         setTimeout(() => alert('Вы выиграли!'), 1000)
         }

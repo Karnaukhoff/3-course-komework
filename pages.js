@@ -65,7 +65,7 @@ export function getPageGame(level) {
   setTimeout(function () {
     page.innerHTML = `
         ${head()}
-        ${getHiddenCards()}
+        ${getHiddenCards(level)}
         `;
     let timer = document.getElementById("timer");
         
