@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "save-dev": "^0.0.1-security",
+    "stylelint-scss": "^5.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write",
+    "lint:js": "eslint index.js",
+    "lint:scss": "stylelint style.scss",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "build": "webpack",
+    "start": "webpack-dev-server --open"
+  }
+}
