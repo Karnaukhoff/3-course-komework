@@ -5,10 +5,15 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: "/index.js",
+  entry: "/index.ts",
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: [ MiniCssExtractPlugin.loader, "css-loader"],
@@ -23,6 +28,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
   optimization: {
     minimizer: [ '...',new CssMinimizerPlugin()],
   },
@@ -34,7 +42,7 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin({
-    patterns: [{ from: "img", to: "img" }, { from: "styles", to: "styles" }],
+    patterns: [{ from: "img", to: "img" }, { from: "styles", to: "styles" }, {from: "fonts", to: "fonts"}],
   }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({

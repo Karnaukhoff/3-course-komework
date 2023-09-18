@@ -1,6 +1,6 @@
-import { turned1, turned2 } from "./turnCards.js"
+import { turned1, turned2 } from "./turnCards"
 
-export let totalRandomCards = []
+export let totalRandomCards: string[] = []
 export function eraseRandomCards() {
     totalRandomCards = []
 }
@@ -46,7 +46,7 @@ const kresti8 = `<img src="/img/8 крести.jpg" class="photo">`
 const kresti7 = `<img src="/img/7 крести.jpg" class="photo">`
 const kresti6 = `<img src="/img/6 крести.jpg" class="photo">`
 
-export const cards = [
+export const cards: any = [
     pikaT,
     pikaK,
     pikaQ,
@@ -85,7 +85,7 @@ export const cards = [
     kresti6,
 ]
 
-export function getRow(row, way, level){
+export function getRow(row: number, way: string, level: number){
     let min = 0
     let max = 6
     let line = ``
@@ -128,7 +128,7 @@ export function getRow(row, way, level){
     return line
 }
 
-export function getCards(level) {
+export function getCards(level: number) {
     let until = 3
     if (level === 2){
         until = 6
@@ -136,7 +136,7 @@ export function getCards(level) {
         until = 9
     }
 
-    let randomCards1 = []
+    let randomCards1: string[] = []
     for (let i = 0; i < until; i++) {
         let index = Math.floor(Math.random() * 36)
         if (randomCards1.includes(cards[index])) {
@@ -146,7 +146,7 @@ export function getCards(level) {
         }
     }
 
-    let randomCards2 = []
+    let randomCards2: string[] = []
     for (let i = 0; i < until; i++) {
         let index = Math.floor(Math.random() * until)
         if (randomCards2.includes(randomCards1[index])) {
@@ -177,7 +177,7 @@ export function getCards(level) {
     `
 }
 
-export function getHiddenCards(level) {
+export function getHiddenCards(level: number) {
     return `
     <section class="cards">
         <div class="first-line card-line">

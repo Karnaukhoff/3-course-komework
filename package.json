@@ -10,9 +10,12 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.198",
     "copy-webpack-plugin": "^11.0.0",
     "save-dev": "^0.0.1-security",
-    "stylelint-scss": "^5.1.0"
+    "stylelint-scss": "^5.1.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,6 +24,7 @@
     "lint:scss": "stylelint style.scss",
     "lint": "npm run lint:js && npm run lint:scss",
     "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "lint:ts": "tsc ––noEmit"
   }
 }

@@ -1,7 +1,8 @@
-import { eraseRandomCards, getCards, getHiddenCards, totalRandomCards } from "./cards.js";
-import { turnCard } from "./turnCards.js";
+import { eraseRandomCards, getCards, getHiddenCards } from "./cards";
+import { turnCard } from "./turnCards";
 
-export const page = document.querySelector(".container");
+export const page: any = document.querySelector(".container");
+let container: any = document.getElementById("container")
 
 export function getPageChoiceLevel() {
   page.innerHTML = `
@@ -19,13 +20,16 @@ export function getPageChoiceLevel() {
         <button id="start-button" class="choice__container_button">Старт</button>
     </form>
         `;
-  document.getElementById("container").style.display = "flex";
-  document.getElementById("container").style.justifyContent = "center";
-  document.getElementById("container").style.alignItems = "center";
+  
+  container.style.display = "flex";
+  container.style.justifyContent = "center";
+  container.style.alignItems = "center";
 }
 
-export let seconds;
-export let minutes;
+export let seconds: number;
+export let minutes: number;
+export let timerId: any
+export let interval: any;
 
 export function realTime() {
     return `${minutes.toString().padStart(2, '0')}.${seconds.toString().padStart(2, '0')}`;
@@ -34,7 +38,7 @@ export function realTime() {
 
 export function head() {
   return `
-<div class="header">
+<div class="header" id="header">
     <section class="header-time">
         <div class="header-time-min-sec">
             <div class="header-time-min-sec__time">min</div>
@@ -50,24 +54,21 @@ export function head() {
     `;
 }
 
-export function getPageGame(level) {
-  let interval;
+export function getPageGame(level: number) {
   seconds = 0;
   minutes = 0;
-  document.getElementById("container").style.display = "block";
+  container.style.display = "block";
   page.innerHTML = `
     ${head()}
     ${getCards(level)}
     `;
 
-  //let randomCards = totalRandomCards;
-
-  setTimeout(function () {
+  timerId = setTimeout(function () {
     page.innerHTML = `
         ${head()}
         ${getHiddenCards(level)}
         `;
-    let timer = document.getElementById("timer");
+    let timer: any = document.getElementById("timer");
         
     function updateTime() {
         seconds++;
@@ -79,18 +80,25 @@ export function getPageGame(level) {
         }
     interval = setInterval(updateTime, 1000);
 
-    
-    const cards = document.querySelectorAll(".hidden");
+    let playAgainButton: any = document.getElementById("playAgainButton")
+    playAgainButton.addEventListener("click", () => {
+      clearTimeout(interval)
+      clearTimeout(timerId)
+      eraseRandomCards()
+      getPageGame(level)
+      })
+
+    const cards: any = document.querySelectorAll(".hidden");
     for (const card of cards) {
       card.addEventListener("click", () => {
         turnCard(Number(card.attributes.index.value), level);
       });
     }
   }, 5000);
-  /*let playAgainButton = document.getElementById("playAgainButton")
+  let playAgainButton: any = document.getElementById("playAgainButton")
   playAgainButton.addEventListener("click", () => {
-    clearInterval(interval)
+    clearTimeout(timerId)
     eraseRandomCards()
     getPageGame(level)
-    })*/
+    })
 }

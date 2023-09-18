@@ -19,6 +19,55 @@ body {
   padding-top: 25px;
 }
 
+.status__container {
+  display: flex;
+  justify-content: center;
+}
+.status__box {
+  height: 459px;
+  width: 480px;
+  background-color: rgb(167, 249, 255);
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.status__text {
+  font-family: "StratosSkyeng";
+  font-size: 40px;
+  color: #004980;
+}
+.status__text_time {
+  font-family: "StratosSkyeng";
+  font-size: 24px;
+  color: #000000;
+  margin-top: 30px;
+}
+.status__time {
+  display: flex;
+  color: #000000;
+  font-size: 64px;
+  font-family: "StratosSkyeng";
+  margin-top: 15px;
+}
+.status__button {
+  margin-top: 29px;
+  background-color: #7ac100;
+  width: 246px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: "StratosSkyeng";
+}
+.status__button:hover {
+  transform: scale(1.05);
+}
+
 .choice__container {
   height: 459px;
   width: 480px;
@@ -97,13 +146,13 @@ body {
   display: flex;
   gap: 29px;
   margin-left: 87px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 16px;
   font-family: "StratosSkyeng";
 }
 .header-time-time {
   display: flex;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 64px;
   font-family: "StratosSkyeng";
 }
