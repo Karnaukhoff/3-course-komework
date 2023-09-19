@@ -7,11 +7,15 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "install": "^0.13.0",
+    "npm": "^8.5.1",
+    "prettier": "^2.5.1"
   },
   "dependencies": {
     "@types/lodash": "^4.14.198",
     "copy-webpack-plugin": "^11.0.0",
+    "prettier": "^3.0.3",
     "save-dev": "^0.0.1-security",
     "stylelint-scss": "^5.1.0",
     "ts-loader": "^9.4.4",
