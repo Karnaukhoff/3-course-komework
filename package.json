@@ -27,7 +27,7 @@
     "format": "prettier --write",
     "lint:js": "eslint index.js",
     "lint:scss": "stylelint style.scss",
-    "lint": "npm run lint:js && npm run lint:scss",
+    "lint": "npm run lint:js && npm run lint:css",
     "build": "webpack",
     "start": "webpack-dev-server --open",
     "lint:ts": "tsc ––noEmit",

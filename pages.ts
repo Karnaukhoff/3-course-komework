@@ -73,7 +73,7 @@ export function getPageGame(level: number) {
 
         function updateTime() {
             seconds++
-            if (seconds === 60) {
+            if (seconds ==== 60) {
                 minutes++
                 seconds = 0
             }
