@@ -3,14 +3,15 @@
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
+    "install": "^0.13.0",
     "mini-css-extract-plugin": "^2.7.6",
+    "npm": "^8.5.1",
+    "prettier": "^2.5.1",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "install": "^0.13.0",
-    "npm": "^8.5.1",
-    "prettier": "^2.5.1"
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "@types/lodash": "^4.14.198",
@@ -29,6 +30,7 @@
     "lint": "npm run lint:js && npm run lint:scss",
     "build": "webpack",
     "start": "webpack-dev-server --open",
-    "lint:ts": "tsc ––noEmit"
+    "lint:ts": "tsc ––noEmit",
+    "prepare": "husky install"
   }
 }

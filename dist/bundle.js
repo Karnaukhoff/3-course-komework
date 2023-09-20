@@ -116,23 +116,25 @@ function getRow(row, way, level) {
         max = 18;
     }
     for (var i = min; i < max; i++) {
-        if (way === "open") {
-            if ((level === 1 && row === 1) || (level > 1)) {
+        if (way === 'open') {
+            if ((level === 1 && row === 1) || level > 1) {
                 line += totalRandomCards[i];
             }
         }
-        else if (way === "hidden") {
-            if ((level === 1 && row === 1) || (level > 1)) {
+        else if (way === 'hidden') {
+            if ((level === 1 && row === 1) || level > 1) {
                 line += "<img src=\"/img/hidden-card.jpg\" class=\"hidden\" index=\"".concat(i, "\"></img>");
             }
         }
-        else if (way === "process") {
-            if ((level === 1 && row === 1) || (level > 1)) {
-                if (_turnCards__WEBPACK_IMPORTED_MODULE_0__.turned2.includes(totalRandomCards[i]) && _turnCards__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i])) {
+        else if (way === 'process') {
+            if ((level === 1 && row === 1) || level > 1) {
+                if (_turnCards__WEBPACK_IMPORTED_MODULE_0__.turned2.includes(totalRandomCards[i]) &&
+                    _turnCards__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i])) {
                     line += totalRandomCards[i];
                 }
                 else {
-                    if (_turnCards__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i]) && _turnCards__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(i)) {
+                    if (_turnCards__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(totalRandomCards[i]) &&
+                        _turnCards__WEBPACK_IMPORTED_MODULE_0__.turned1.includes(i)) {
                         line += totalRandomCards[i];
                     }
                     else {
@@ -181,10 +183,10 @@ function getCards(level) {
             totalRandomCards.push(randomCards2[i / 2]);
         }
     }
-    return "\n<section class=\"cards\">\n    <div class=\"first-line card-line\">\n        ".concat(getRow(1, "open", level), "\n    </div>\n    <div class=\"second-line card-line\">\n        ").concat(getRow(2, "open", level), "\n    </div>\n</section>\n    ");
+    return "\n<section class=\"cards\">\n    <div class=\"first-line card-line\">\n        ".concat(getRow(1, 'open', level), "\n    </div>\n    <div class=\"second-line card-line\">\n        ").concat(getRow(2, 'open', level), "\n    </div>\n</section>\n    ");
 }
 function getHiddenCards(level) {
-    return "\n    <section class=\"cards\">\n        <div class=\"first-line card-line\">\n            ".concat(getRow(1, "hidden", level), "\n        </div>\n        <div class=\"second-line card-line\">\n            ").concat(getRow(2, "hidden", level), "\n        </div>\n    </section>\n        ");
+    return "\n    <section class=\"cards\">\n        <div class=\"first-line card-line\">\n            ".concat(getRow(1, 'hidden', level), "\n        </div>\n        <div class=\"second-line card-line\">\n            ").concat(getRow(2, 'hidden', level), "\n        </div>\n    </section>\n        ");
 }
 
 
@@ -212,20 +214,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _turnCards__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./turnCards */ "./turnCards.ts");
 
 
-var page = document.querySelector(".container");
-var container = document.getElementById("container");
+var page = document.querySelector('.container');
+var container = document.getElementById('container');
 function getPageChoiceLevel() {
     page.innerHTML = "\n    <form class=\"choice__container\">\n        <p class=\"choice__container_name\">\u0412\u044B\u0431\u0435\u0440\u0438 \n            \u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u044C</p>\n            <div class=\"choice__container_levels\">\n                <input type=\"radio\" id=\"radio1\" class=\"radios\" value=\"1\" name=\"radios\">\n                    <label for=\"radio1\">1</label>\n                <input type=\"radio\" id=\"radio2\" class=\"radios\" value=\"2\" name=\"radios\">\n                    <label for=\"radio2\">2</label>\n                <input type=\"radio\" id=\"radio3\" class=\"radios\" value=\"3\" name=\"radios\">\n                    <label for=\"radio3\">3</label>\n            </div>\n        <button id=\"start-button\" class=\"choice__container_button\">\u0421\u0442\u0430\u0440\u0442</button>\n    </form>\n        ";
-    container.style.display = "flex";
-    container.style.justifyContent = "center";
-    container.style.alignItems = "center";
+    container.style.display = 'flex';
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
 }
 var seconds;
 var minutes;
 var timerId;
 var interval;
 function realTime() {
-    return "".concat(minutes.toString().padStart(2, '0'), ".").concat(seconds.toString().padStart(2, '0'));
+    return "".concat(minutes.toString().padStart(2, '0'), ".").concat(seconds
+        .toString()
+        .padStart(2, '0'));
 }
 function head() {
     return "\n<div class=\"header\" id=\"header\">\n    <section class=\"header-time\">\n        <div class=\"header-time-min-sec\">\n            <div class=\"header-time-min-sec__time\">min</div>\n            <div class=\"header-time-min-sec__time\"></div>\n            <div class=\"header-time-min-sec__time\">sek</div>\n        </div>\n        <div class=\"header-time\">\n            <div class=\"header-time-time\" id=\"timer\">".concat(realTime(), "</div>\n        </div>\n    </section>\n    <button class=\"header-time-button\" id=\"playAgainButton\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n</div>\n    ");
@@ -233,40 +237,42 @@ function head() {
 function getPageGame(level) {
     seconds = 0;
     minutes = 0;
-    container.style.display = "block";
+    container.style.display = 'block';
     page.innerHTML = "\n    ".concat(head(), "\n    ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getCards)(level), "\n    ");
     timerId = setTimeout(function () {
         page.innerHTML = "\n        ".concat(head(), "\n        ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getHiddenCards)(level), "\n        ");
-        var timer = document.getElementById("timer");
+        var timer = document.getElementById('timer');
         function updateTime() {
             seconds++;
             if (seconds === 60) {
                 minutes++;
                 seconds = 0;
             }
-            timer.textContent = "".concat(minutes.toString().padStart(2, '0'), ".").concat(seconds.toString().padStart(2, '0'));
+            timer.textContent = "".concat(minutes
+                .toString()
+                .padStart(2, '0'), ".").concat(seconds.toString().padStart(2, '0'));
         }
         interval = setInterval(updateTime, 1000);
-        var playAgainButton = document.getElementById("playAgainButton");
-        playAgainButton.addEventListener("click", function () {
+        var playAgainButton = document.getElementById('playAgainButton');
+        playAgainButton.addEventListener('click', function () {
             clearTimeout(interval);
             clearTimeout(timerId);
             (0,_cards__WEBPACK_IMPORTED_MODULE_0__.eraseRandomCards)();
             getPageGame(level);
         });
-        var cards = document.querySelectorAll(".hidden");
+        var cards = document.querySelectorAll('.hidden');
         var _loop_1 = function (card) {
-            card.addEventListener("click", function () {
+            card.addEventListener('click', function () {
                 (0,_turnCards__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes.index.value), level);
             });
         };
-        for (var _i = 0, cards_1 = cards; _i < cards_1.length; _i++) {
-            var card = cards_1[_i];
+        for (var _i = 0, _a = cards; _i < _a.length; _i++) {
+            var card = _a[_i];
             _loop_1(card);
         }
     }, 5000);
-    var playAgainButton = document.getElementById("playAgainButton");
-    playAgainButton.addEventListener("click", function () {
+    var playAgainButton = document.getElementById('playAgainButton');
+    playAgainButton.addEventListener('click', function () {
         clearTimeout(timerId);
         (0,_cards__WEBPACK_IMPORTED_MODULE_0__.eraseRandomCards)();
         getPageGame(level);
@@ -305,10 +311,6 @@ function eraseTurned1() {
 function eraseTurned2() {
     turned2 = [];
 }
-var header = document.getElementById("header");
-var playAgainButton = document.getElementById("playAgainButton");
-var status_box = document.getElementById("status_box");
-var cards = document.getElementById("cards");
 var pair1 = [];
 var pair2 = [];
 var pair3 = [];
@@ -330,21 +332,27 @@ function erasePairs() {
     pair9 = [];
 }
 function time(sec, min) {
-    return "".concat(min.toString().padStart(2, '0'), ".").concat(sec.toString().padStart(2, '0'));
+    return "".concat(min.toString().padStart(2, '0'), ".").concat(sec
+        .toString()
+        .padStart(2, '0'));
 }
 function lostMessage(level, sec, min) {
     clearTimeout(int);
     clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.interval);
     clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.timerId);
     setTimeout(function () {
-        _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"status__container\">\n            <form class=\"status__box\" id=\"status_box\">\n                <img src=\"/img/dead.png\" alt=\"lose\" class=\"status__icon\">\n                <p class=\"status__text\">\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438!</p>\n                <p class=\"status__text_time\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n                <div class=\"status__time\" id=\"timer\">").concat(time(sec, min), "</div>\n                <button class=\"status__button\" id=\"oneMoreButton\">\u0418\u0433\u0440\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430</button>\n            </form>\n        </section>\n        <section class=\"cards\" id=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, "process", level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, "process", level), "\n            </div>\n        </section>\n        ");
-        header.style.filter = "brightness(0.5)";
+        _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"status__container\">\n            <form class=\"status__box\" id=\"status_box\">\n                <img src=\"/img/dead.png\" alt=\"lose\" class=\"status__icon\">\n                <p class=\"status__text\">\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438!</p>\n                <p class=\"status__text_time\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n                <div class=\"status__time\" id=\"timer\">").concat(time(sec, min), "</div>\n                <button class=\"status__button\" id=\"oneMoreButton\">\u0418\u0433\u0440\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430</button>\n            </form>\n        </section>\n        <section class=\"cards\" id=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, 'process', level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, 'process', level), "\n            </div>\n        </section>\n        ");
+        var header = document.getElementById('header');
+        var playAgainButton = document.getElementById('playAgainButton');
+        var status_box = document.getElementById('status_box');
+        var cards = document.getElementById('cards');
+        header.style.filter = 'brightness(0.5)';
         playAgainButton.disabled = true;
         status_box.style.zIndex = 2;
-        cards.style.filter = "brightness(0.5)";
+        cards.style.filter = 'brightness(0.5)';
         cards.style.zIndex = 1;
-        var oneMoreButton = document.getElementById("oneMoreButton");
-        oneMoreButton.addEventListener("click", function () {
+        var oneMoreButton = document.getElementById('oneMoreButton');
+        oneMoreButton.addEventListener('click', function () {
             clearTimeout(int);
             clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.interval);
             clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.timerId);
@@ -423,7 +431,8 @@ function turnCard(index, level) {
     else if (level === 3) {
         cardsToWin = 18;
     }
-    if (!turned1.includes(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]) || !turned2.includes(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {
+    if (!turned1.includes(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]) ||
+        !turned2.includes(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {
         if (!turned1.includes(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index])) {
             turned1.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
             turned1.push(index);
@@ -432,9 +441,9 @@ function turnCard(index, level) {
             turned2.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
             turned2.push(index);
         }
-        var clickCardNumber = (turned1.length / 2) + (turned2.length / 2);
-        _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, "process", level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, "process", level), "\n            </div>\n        </section>\n        ");
-        var timer_1 = document.getElementById("timer");
+        var clickCardNumber = turned1.length / 2 + turned2.length / 2;
+        _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, 'process', level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, 'process', level), "\n            </div>\n        </section>\n        ");
+        var timer_1 = document.getElementById('timer');
         var sec_1 = _pages__WEBPACK_IMPORTED_MODULE_1__.seconds;
         var min_1 = _pages__WEBPACK_IMPORTED_MODULE_1__.minutes;
         /*function updateTime() {
@@ -451,7 +460,9 @@ function turnCard(index, level) {
                 min_1++;
                 sec_1 = 0;
             }
-            timer_1.textContent = "".concat(min_1.toString().padStart(2, '0'), ".").concat(sec_1.toString().padStart(2, '0'));
+            timer_1.textContent = "".concat(min_1.toString().padStart(2, '0'), ".").concat(sec_1
+                .toString()
+                .padStart(2, '0'));
         }, 1000);
         pairs(clickCardNumber, index, level, sec_1, min_1);
         if (clickCardNumber === cardsToWin && status === "won") {
@@ -459,18 +470,18 @@ function turnCard(index, level) {
             clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.interval);
             clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.timerId);
             setTimeout(function () {
-                _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"status__container\">\n            <form class=\"status__box\" id=\"status_box\">\n            <img src=\"img/celebration.png\" alt=\"win\" class=\"status__icon\">\n                <p class=\"status__text\">\u0412\u044B \u0432\u044B\u0438\u0433\u0440\u0430\u043B\u0438!</p>\n                <p class=\"status__text_time\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n                <div class=\"status__time\" id=\"timer\">").concat(time(sec_1, min_1), "</div>\n                <button class=\"status__button\" id=\"oneMoreButton\">\u0418\u0433\u0440\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430</button>\n            </form>\n        </section>\n        <section class=\"cards\" id=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, "process", level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, "process", level), "\n            </div>\n        </section>\n        ");
-                var header = document.getElementById("header");
-                var playAgainButton = document.getElementById("playAgainButton");
-                var status_box = document.getElementById("status_box");
-                var cards = document.getElementById("cards");
-                header.style.filter = "brightness(0.5)";
+                _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"status__container\">\n            <form class=\"status__box\" id=\"status_box\">\n            <img src=\"img/celebration.png\" alt=\"win\" class=\"status__icon\">\n                <p class=\"status__text\">\u0412\u044B \u0432\u044B\u0438\u0433\u0440\u0430\u043B\u0438!</p>\n                <p class=\"status__text_time\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n                <div class=\"status__time\" id=\"timer\">").concat(time(sec_1, min_1), "</div>\n                <button class=\"status__button\" id=\"oneMoreButton\">\u0418\u0433\u0440\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430</button>\n            </form>\n        </section>\n        <section class=\"cards\" id=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, 'process', level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, 'process', level), "\n            </div>\n        </section>\n        ");
+                var header = document.getElementById('header');
+                var playAgainButton = document.getElementById('playAgainButton');
+                var status_box = document.getElementById('status_box');
+                var cards = document.getElementById('cards');
+                header.style.filter = 'brightness(0.5)';
                 playAgainButton.disabled = true;
                 status_box.style.zIndex = 2;
-                cards.style.filter = "brightness(0.5)";
+                cards.style.filter = 'brightness(0.5)';
                 cards.style.zIndex = 1;
-                var oneMoreButton = document.getElementById("oneMoreButton");
-                oneMoreButton.addEventListener("click", function () {
+                var oneMoreButton = document.getElementById('oneMoreButton');
+                oneMoreButton.addEventListener('click', function () {
                     clearTimeout(int);
                     clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.interval);
                     clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.timerId);
@@ -484,8 +495,8 @@ function turnCard(index, level) {
                 });
             }, 1000);
         }
-        var playAgainButton_1 = document.getElementById("playAgainButton");
-        playAgainButton_1.addEventListener("click", function () {
+        var playAgainButton = document.getElementById('playAgainButton');
+        playAgainButton.addEventListener('click', function () {
             clearTimeout(int);
             clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.interval);
             clearTimeout(_pages__WEBPACK_IMPORTED_MODULE_1__.timerId);
@@ -495,14 +506,14 @@ function turnCard(index, level) {
             erasePairs();
             (0,_pages__WEBPACK_IMPORTED_MODULE_1__.getPageGame)(level);
         });
-        var cards_2 = document.querySelectorAll(".hidden");
+        var cards = document.querySelectorAll('.hidden');
         var _loop_1 = function (card) {
-            card.addEventListener("click", function () {
+            card.addEventListener('click', function () {
                 turnCard(Number(card.attributes.index.value), level);
             });
         };
-        for (var _i = 0, cards_1 = cards_2; _i < cards_1.length; _i++) {
-            var card = cards_1[_i];
+        for (var _i = 0, _a = cards; _i < _a.length; _i++) {
+            var card = _a[_i];
             _loop_1(card);
         }
     }
@@ -577,11 +588,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages */ "./pages.ts");
 
 (0,_pages__WEBPACK_IMPORTED_MODULE_0__.getPageChoiceLevel)();
-var startButton = document.getElementById("start-button");
-var radio1 = document.getElementById("radio1");
-var radio2 = document.getElementById("radio2");
-var radio3 = document.getElementById("radio2");
-startButton.addEventListener("click", function () {
+var startButton = document.getElementById('start-button');
+var radio1 = document.getElementById('radio1');
+var radio2 = document.getElementById('radio2');
+var radio3 = document.getElementById('radio2');
+startButton.addEventListener('click', function () {
     if (radio1.checked) {
         (0,_pages__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(1);
     }
@@ -592,7 +603,7 @@ startButton.addEventListener("click", function () {
         (0,_pages__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(3);
     }
     else {
-        alert("Выберите уровень");
+        alert('Выберите уровень');
     }
 });
 //окно выиграл/проиграл
