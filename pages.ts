@@ -73,7 +73,7 @@ export function getPageGame(level: number) {
 
         function updateTime() {
             seconds++
-            if (seconds ==== 60) {
+            if (seconds === 60) {
                 minutes++
                 seconds = 0
             }
@@ -93,13 +93,11 @@ export function getPageGame(level: number) {
             getPageGame(level)
         })
 
-        const cards: NodeListOf<HTMLElement> =
+        const cards: NodeListOf<Element> =
             document.querySelectorAll('.hidden')
-        for (const card of cards as any) {
-            card.addEventListener('click', () => {
-                turnCard(Number(card.attributes.index.value), level)
-            })
-        }
+            cards.forEach(card => card.addEventListener('click', () => {
+                turnCard(Number(card.attributes[2].value), level)
+            }))
     }, 5000)
     let playAgainButton = document.getElementById(
         'playAgainButton',

@@ -76,14 +76,14 @@ function lostMessage(level: number, sec: number, min: number) {
         `
         let header = document.getElementById('header') as HTMLDivElement
         let playAgainButton = document.getElementById('playAgainButton') as HTMLInputElement
-        let status_box: any = document.getElementById('status_box')
-        let cards: any = document.getElementById('cards')
+        let status_box = document.getElementById('status_box') as HTMLDivElement
+        let cards = document.getElementById('cards') as HTMLDivElement
 
         header.style.filter = 'brightness(0.5)'
         playAgainButton.disabled = true
-        status_box.style.zIndex = 2
+        status_box.style.zIndex = "2"
         cards.style.filter = 'brightness(0.5)'
-        cards.style.zIndex = 1
+        cards.style.zIndex = "1"
 
         let oneMoreButton = document.getElementById('oneMoreButton') as HTMLInputElement
         oneMoreButton.addEventListener('click', () => {
@@ -188,18 +188,10 @@ export function turnCard(index: number, level: number) {
             </div>
         </section>
         `
-        let timer: any = document.getElementById('timer')
+        let timer = document.getElementById('timer') as HTMLInputElement
 
         let sec = seconds
         let min = minutes
-        /*function updateTime() {
-            sec++;
-            if (sec === 60) {
-                min++;
-                sec = 0;
-            }
-            timer.textContent = `${min.toString().padStart(2, '0')}.${sec.toString().padStart(2, '0')}`;
-            }*/
 
         int = setInterval(function () {
             sec++
@@ -240,14 +232,14 @@ export function turnCard(index: number, level: number) {
         `
         let header = document.getElementById('header') as HTMLDivElement
         let playAgainButton = document.getElementById('playAgainButton') as HTMLInputElement
-        let status_box: any = document.getElementById('status_box')
-        let cards: any = document.getElementById('cards')
+        let status_box = document.getElementById('status_box') as HTMLDivElement
+        let cards = document.getElementById('cards') as HTMLDivElement
 
-                header.style.filter = 'brightness(0.5)'
-                playAgainButton.disabled = true
-                status_box.style.zIndex = 2
-                cards.style.filter = 'brightness(0.5)'
-                cards.style.zIndex = 1
+        header.style.filter = 'brightness(0.5)'
+        playAgainButton.disabled = true
+        status_box.style.zIndex = "2"
+        cards.style.filter = 'brightness(0.5)'
+        cards.style.zIndex = "1"
 
                 let oneMoreButton =
                     document.getElementById('oneMoreButton') as HTMLInputElement
@@ -279,10 +271,8 @@ export function turnCard(index: number, level: number) {
         })
 
         const cards: NodeListOf<HTMLElement> = document.querySelectorAll('.hidden')
-        for (const card of cards as any) {
-            card.addEventListener('click', () => {
-                turnCard(Number(card.attributes.index.value), level)
-            })
-        }
+        cards.forEach(card => card.addEventListener('click', () => {
+            turnCard(Number(card.attributes[2].value), level)
+        }))
     }
 }
