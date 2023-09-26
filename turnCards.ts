@@ -75,17 +75,21 @@ function lostMessage(level: number, sec: number, min: number) {
         </section>
         `
         let header = document.getElementById('header') as HTMLDivElement
-        let playAgainButton = document.getElementById('playAgainButton') as HTMLInputElement
+        let playAgainButton = document.getElementById(
+            'playAgainButton'
+        ) as HTMLInputElement
         let status_box = document.getElementById('status_box') as HTMLDivElement
         let cards = document.getElementById('cards') as HTMLDivElement
 
         header.style.filter = 'brightness(0.5)'
         playAgainButton.disabled = true
-        status_box.style.zIndex = "2"
+        status_box.style.zIndex = '2'
         cards.style.filter = 'brightness(0.5)'
-        cards.style.zIndex = "1"
+        cards.style.zIndex = '1'
 
-        let oneMoreButton = document.getElementById('oneMoreButton') as HTMLInputElement
+        let oneMoreButton = document.getElementById(
+            'oneMoreButton'
+        ) as HTMLInputElement
         oneMoreButton.addEventListener('click', () => {
             clearTimeout(int)
             clearTimeout(interval)
@@ -109,17 +113,35 @@ function pairs(
     sec: number,
     min: number
 ) {
-    const pairIndex: number = Math.ceil(number / 2) - 1 
+    const pairIndex: number = Math.ceil(number / 2) - 1
 
-    let pairsArray: number[][] = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
-    pairsArray[pairIndex].push(Number(totalRandomCards[index])) 
+    let pairsArray: number[][] = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ]
+    pairsArray[pairIndex].push(Number(totalRandomCards[index]))
 
     if (
         pairsArray[pairIndex].length === 2 &&
         pairsArray[pairIndex][0] !== pairsArray[pairIndex][1]
     ) {
-    
-        lostMessage(level, sec, min) 
+        lostMessage(level, sec, min)
     }
 }
 
@@ -196,19 +218,24 @@ export function turnCard(index: number, level: number) {
             </div>
         </section>
         `
-        let header = document.getElementById('header') as HTMLDivElement
-        let playAgainButton = document.getElementById('playAgainButton') as HTMLInputElement
-        let status_box = document.getElementById('status_box') as HTMLDivElement
-        let cards = document.getElementById('cards') as HTMLDivElement
+                let header = document.getElementById('header') as HTMLDivElement
+                let playAgainButton = document.getElementById(
+                    'playAgainButton'
+                ) as HTMLInputElement
+                let status_box = document.getElementById(
+                    'status_box'
+                ) as HTMLDivElement
+                let cards = document.getElementById('cards') as HTMLDivElement
 
-        header.style.filter = 'brightness(0.5)'
-        playAgainButton.disabled = true
-        status_box.style.zIndex = "2"
-        cards.style.filter = 'brightness(0.5)'
-        cards.style.zIndex = "1"
+                header.style.filter = 'brightness(0.5)'
+                playAgainButton.disabled = true
+                status_box.style.zIndex = '2'
+                cards.style.filter = 'brightness(0.5)'
+                cards.style.zIndex = '1'
 
-                let oneMoreButton =
-                    document.getElementById('oneMoreButton') as HTMLInputElement
+                let oneMoreButton = document.getElementById(
+                    'oneMoreButton'
+                ) as HTMLInputElement
                 oneMoreButton.addEventListener('click', () => {
                     clearTimeout(int)
                     clearTimeout(interval)
@@ -224,7 +251,9 @@ export function turnCard(index: number, level: number) {
             }, 1000)
         }
 
-        let playAgainButton = document.getElementById('playAgainButton') as HTMLInputElement
+        let playAgainButton = document.getElementById(
+            'playAgainButton'
+        ) as HTMLInputElement
         playAgainButton.addEventListener('click', () => {
             clearTimeout(int)
             clearTimeout(interval)
@@ -236,9 +265,12 @@ export function turnCard(index: number, level: number) {
             getPageGame(level)
         })
 
-        const cards: NodeListOf<HTMLElement> = document.querySelectorAll('.hidden')
-        cards.forEach(card => card.addEventListener('click', () => {
-            turnCard(Number(card.attributes[2].value), level)
-        }))
+        const cards: NodeListOf<HTMLElement> =
+            document.querySelectorAll('.hidden')
+        cards.forEach((card) =>
+            card.addEventListener('click', () => {
+                turnCard(Number(card.attributes[2].value), level)
+            })
+        )
     }
 }

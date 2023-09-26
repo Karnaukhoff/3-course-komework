@@ -73,7 +73,7 @@ export function getPageGame(level: number) {
 
         function updateTime() {
             seconds++
-            if (seconds ==== 60) {
+            if (seconds === 60) {
                 minutes++
                 seconds = 0
             }
@@ -84,7 +84,7 @@ export function getPageGame(level: number) {
         interval = setInterval(updateTime, 1000)
 
         let playAgainButton = document.getElementById(
-            'playAgainButton',
+            'playAgainButton'
         ) as HTMLDivElement
         playAgainButton.addEventListener('click', () => {
             clearTimeout(interval)
@@ -93,14 +93,15 @@ export function getPageGame(level: number) {
             getPageGame(level)
         })
 
-        const cards: NodeListOf<Element> =
-            document.querySelectorAll('.hidden')
-            cards.forEach(card => card.addEventListener('click', () => {
+        const cards: NodeListOf<Element> = document.querySelectorAll('.hidden')
+        cards.forEach((card) =>
+            card.addEventListener('click', () => {
                 turnCard(Number(card.attributes[2].value), level)
-            }))
+            })
+        )
     }, 5000)
     let playAgainButton = document.getElementById(
-        'playAgainButton',
+        'playAgainButton'
     ) as HTMLDivElement
     playAgainButton.addEventListener('click', () => {
         clearTimeout(timerId)
