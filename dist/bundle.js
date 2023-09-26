@@ -261,15 +261,9 @@ function getPageGame(level) {
             getPageGame(level);
         });
         var cards = document.querySelectorAll('.hidden');
-        var _loop_1 = function (card) {
-            card.addEventListener('click', function () {
-                (0,_turnCards__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes.index.value), level);
-            });
-        };
-        for (var _i = 0, _a = cards; _i < _a.length; _i++) {
-            var card = _a[_i];
-            _loop_1(card);
-        }
+        cards.forEach(function (card) { return card.addEventListener('click', function () {
+            (0,_turnCards__WEBPACK_IMPORTED_MODULE_1__.turnCard)(Number(card.attributes[2].value), level);
+        }); });
     }, 5000);
     var playAgainButton = document.getElementById('playAgainButton');
     playAgainButton.addEventListener('click', function () {
@@ -348,9 +342,9 @@ function lostMessage(level, sec, min) {
         var cards = document.getElementById('cards');
         header.style.filter = 'brightness(0.5)';
         playAgainButton.disabled = true;
-        status_box.style.zIndex = 2;
+        status_box.style.zIndex = "2";
         cards.style.filter = 'brightness(0.5)';
-        cards.style.zIndex = 1;
+        cards.style.zIndex = "1";
         var oneMoreButton = document.getElementById('oneMoreButton');
         oneMoreButton.addEventListener('click', function () {
             clearTimeout(int);
@@ -368,59 +362,12 @@ function lostMessage(level, sec, min) {
     status = "lost";
 }
 function pairs(number, index, level, sec, min) {
-    if (number <= 2) {
-        pair1.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair1.length === 2 && pair1[0] !== pair1[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 4) {
-        pair2.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair2.length === 2 && pair2[0] !== pair2[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 6) {
-        pair3.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair3.length === 2 && pair3[0] !== pair3[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 8) {
-        pair4.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair4.length === 2 && pair4[0] !== pair4[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 10) {
-        pair5.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair5.length === 2 && pair5[0] !== pair5[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 12) {
-        pair6.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair6.length === 2 && pair6[0] !== pair6[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 14) {
-        pair7.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair7.length === 2 && pair7[0] !== pair7[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 16) {
-        pair8.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair8.length === 2 && pair8[0] !== pair8[1]) {
-            lostMessage(level, sec, min);
-        }
-    }
-    else if (number <= 18) {
-        pair9.push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
-        if (pair9.length === 2 && pair9[0] !== pair9[1]) {
-            lostMessage(level, sec, min);
-        }
+    var pairIndex = Math.ceil(number / 2) - 1;
+    var pairsArray = [[], []];
+    pairsArray[pairIndex].push(Number(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]));
+    if (pairsArray[pairIndex].length === 2 &&
+        pairsArray[pairIndex][0] !== pairsArray[pairIndex][1]) {
+        lostMessage(level, sec, min);
     }
 }
 function turnCard(index, level) {
@@ -446,14 +393,6 @@ function turnCard(index, level) {
         var timer_1 = document.getElementById('timer');
         var sec_1 = _pages__WEBPACK_IMPORTED_MODULE_1__.seconds;
         var min_1 = _pages__WEBPACK_IMPORTED_MODULE_1__.minutes;
-        /*function updateTime() {
-            sec++;
-            if (sec === 60) {
-                min++;
-                sec = 0;
-            }
-            timer.textContent = `${min.toString().padStart(2, '0')}.${sec.toString().padStart(2, '0')}`;
-            }*/
         int = setInterval(function () {
             sec_1++;
             if (sec_1 === 60) {
@@ -477,9 +416,9 @@ function turnCard(index, level) {
                 var cards = document.getElementById('cards');
                 header.style.filter = 'brightness(0.5)';
                 playAgainButton.disabled = true;
-                status_box.style.zIndex = 2;
+                status_box.style.zIndex = "2";
                 cards.style.filter = 'brightness(0.5)';
-                cards.style.zIndex = 1;
+                cards.style.zIndex = "1";
                 var oneMoreButton = document.getElementById('oneMoreButton');
                 oneMoreButton.addEventListener('click', function () {
                     clearTimeout(int);
@@ -507,15 +446,9 @@ function turnCard(index, level) {
             (0,_pages__WEBPACK_IMPORTED_MODULE_1__.getPageGame)(level);
         });
         var cards = document.querySelectorAll('.hidden');
-        var _loop_1 = function (card) {
-            card.addEventListener('click', function () {
-                turnCard(Number(card.attributes.index.value), level);
-            });
-        };
-        for (var _i = 0, _a = cards; _i < _a.length; _i++) {
-            var card = _a[_i];
-            _loop_1(card);
-        }
+        cards.forEach(function (card) { return card.addEventListener('click', function () {
+            turnCard(Number(card.attributes[2].value), level);
+        }); });
     }
 }
 
@@ -591,7 +524,7 @@ __webpack_require__.r(__webpack_exports__);
 var startButton = document.getElementById('start-button');
 var radio1 = document.getElementById('radio1');
 var radio2 = document.getElementById('radio2');
-var radio3 = document.getElementById('radio2');
+var radio3 = document.getElementById('radio3');
 startButton.addEventListener('click', function () {
     if (radio1.checked) {
         (0,_pages__WEBPACK_IMPORTED_MODULE_0__.getPageGame)(1);
@@ -606,7 +539,6 @@ startButton.addEventListener('click', function () {
         alert('Выберите уровень');
     }
 });
-//окно выиграл/проиграл
 
 })();
 
