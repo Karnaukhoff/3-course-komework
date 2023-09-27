@@ -6,7 +6,7 @@ getPageChoiceLevel()
 const startButton = document.getElementById('start-button') as HTMLInputElement
 const radio1 = document.getElementById('radio1') as HTMLInputElement
 const radio2 = document.getElementById('radio2') as HTMLInputElement
-const radio3 = document.getElementById('radio3') as HTMLInputElement
+//const radio3 = document.getElementById('radio3') as HTMLInputElement
 
 startButton.addEventListener('click', () => {
     if (radio1.checked) {
