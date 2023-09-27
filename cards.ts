@@ -4,7 +4,7 @@ export let totalRandomCards: string[] = []
 export function eraseRandomCards() {
     totalRandomCards = []
 }
-export let watch = []
+export const watch = []
 
 const pikaT = `<img src="/img/туз пики.jpg" class="photo">`
 const pikaK = `<img src="/img/король пики.jpg" class="photo">`
@@ -89,7 +89,7 @@ export function getRow(row: number, way: string, level: number) {
     let min = 0
     let max = 6
     let line = ``
-    if (level > 1 && row === 1) {
+    if (level > 1 && row ==== 1) {
         min = 0
         max = 9
     } else if (level === 2 && row === 2) {
@@ -139,9 +139,9 @@ export function getCards(level: number) {
         until = 9
     }
 
-    let randomCards1: string[] = []
+    const randomCards1: string[] = []
     for (let i = 0; i < until; i++) {
-        let index = Math.floor(Math.random() * 36)
+        const index = Math.floor(Math.random() * 36)
         if (randomCards1.includes(cards[index])) {
             i--
         } else {
@@ -149,9 +149,9 @@ export function getCards(level: number) {
         }
     }
 
-    let randomCards2: string[] = []
+    const randomCards2: string[] = []
     for (let i = 0; i < until; i++) {
-        let index = Math.floor(Math.random() * until)
+        const index = Math.floor(Math.random() * until)
         if (randomCards2.includes(randomCards1[index])) {
             i--
         } else {

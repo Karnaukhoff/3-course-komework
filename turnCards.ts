@@ -21,26 +21,48 @@ export function eraseTurned2() {
     turned2 = []
 }
 
-let pair1: Array<string> = []
-let pair2: Array<string> = []
-let pair3: Array<string> = []
-let pair4: Array<string> = []
-let pair5: Array<string> = []
-let pair6: Array<string> = []
-let pair7: Array<string> = []
-let pair8: Array<string> = []
-let pair9: Array<string> = []
+let pairsArray: number[][] = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+]
 
 export function erasePairs() {
-    pair1 = []
-    pair2 = []
-    pair3 = []
-    pair4 = []
-    pair5 = []
-    pair6 = []
-    pair7 = []
-    pair8 = []
-    pair9 = []
+    pairsArray = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ]
 }
 
 function time(sec: number, min: number) {
@@ -74,21 +96,23 @@ function lostMessage(level: number, sec: number, min: number) {
             </div>
         </section>
         `
-        let header = document.getElementById('header') as HTMLDivElement
-        let playAgainButton = document.getElementById(
-            'playAgainButton'
+        const header = document.getElementById('header') as HTMLDivElement
+        const playAgainButton = document.getElementById(
+            'playAgainButton',
         ) as HTMLInputElement
-        let status_box = document.getElementById('status_box') as HTMLDivElement
-        let cards = document.getElementById('cards') as HTMLDivElement
+        const statusBox = document.getElementById(
+            'status_box',
+        ) as HTMLDivElement
+        const cards = document.getElementById('cards') as HTMLDivElement
 
         header.style.filter = 'brightness(0.5)'
         playAgainButton.disabled = true
-        status_box.style.zIndex = '2'
+        statusBox.style.zIndex = '2'
         cards.style.filter = 'brightness(0.5)'
         cards.style.zIndex = '1'
 
-        let oneMoreButton = document.getElementById(
-            'oneMoreButton'
+        const oneMoreButton = document.getElementById(
+            'oneMoreButton',
         ) as HTMLInputElement
         oneMoreButton.addEventListener('click', () => {
             clearTimeout(int)
@@ -111,30 +135,10 @@ function pairs(
     index: number,
     level: number,
     sec: number,
-    min: number
+    min: number,
 ) {
     const pairIndex: number = Math.ceil(number / 2) - 1
 
-    let pairsArray: number[][] = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-    ]
     pairsArray[pairIndex].push(Number(totalRandomCards[index]))
 
     if (
@@ -164,7 +168,7 @@ export function turnCard(index: number, level: number) {
             turned2.push(totalRandomCards[index])
             turned2.push(index)
         }
-        let clickCardNumber = turned1.length / 2 + turned2.length / 2
+        const clickCardNumber = turned1.length / 2 + turned2.length / 2
         page.innerHTML = `
         ${head()}
         <section class="cards">
@@ -176,7 +180,7 @@ export function turnCard(index: number, level: number) {
             </div>
         </section>
         `
-        let timer = document.getElementById('timer') as HTMLInputElement
+        const timer = document.getElementById('timer') as HTMLInputElement
 
         let sec = seconds
         let min = minutes
@@ -218,23 +222,25 @@ export function turnCard(index: number, level: number) {
             </div>
         </section>
         `
-                let header = document.getElementById('header') as HTMLDivElement
-                let playAgainButton = document.getElementById(
-                    'playAgainButton'
-                ) as HTMLInputElement
-                let status_box = document.getElementById(
-                    'status_box'
+                const header = document.getElementById(
+                    'header',
                 ) as HTMLDivElement
-                let cards = document.getElementById('cards') as HTMLDivElement
+                const playAgainButton = document.getElementById(
+                    'playAgainButton',
+                ) as HTMLInputElement
+                const statusBox = document.getElementById(
+                    'status_box',
+                ) as HTMLDivElement
+                const cards = document.getElementById('cards') as HTMLDivElement
 
                 header.style.filter = 'brightness(0.5)'
                 playAgainButton.disabled = true
-                status_box.style.zIndex = '2'
+                statusBox.style.zIndex = '2'
                 cards.style.filter = 'brightness(0.5)'
                 cards.style.zIndex = '1'
 
-                let oneMoreButton = document.getElementById(
-                    'oneMoreButton'
+                const oneMoreButton = document.getElementById(
+                    'oneMoreButton',
                 ) as HTMLInputElement
                 oneMoreButton.addEventListener('click', () => {
                     clearTimeout(int)
@@ -251,8 +257,8 @@ export function turnCard(index: number, level: number) {
             }, 1000)
         }
 
-        let playAgainButton = document.getElementById(
-            'playAgainButton'
+        const playAgainButton = document.getElementById(
+            'playAgainButton',
         ) as HTMLInputElement
         playAgainButton.addEventListener('click', () => {
             clearTimeout(int)
@@ -270,7 +276,7 @@ export function turnCard(index: number, level: number) {
         cards.forEach((card) =>
             card.addEventListener('click', () => {
                 turnCard(Number(card.attributes[2].value), level)
-            })
+            }),
         )
     }
 }

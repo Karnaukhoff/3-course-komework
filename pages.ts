@@ -2,7 +2,7 @@ import { eraseRandomCards, getCards, getHiddenCards } from './cards'
 import { turnCard } from './turnCards'
 
 export const page = document.querySelector('.container') as HTMLDivElement
-let container = document.getElementById('container') as HTMLDivElement
+const container = document.getElementById('container') as HTMLDivElement
 
 export function getPageChoiceLevel() {
     page.innerHTML = `
@@ -69,7 +69,7 @@ export function getPageGame(level: number) {
         ${head()}
         ${getHiddenCards(level)}
         `
-        let timer = document.getElementById('timer') as HTMLDivElement
+        const timer = document.getElementById('timer') as HTMLDivElement
 
         function updateTime() {
             seconds++
@@ -83,8 +83,8 @@ export function getPageGame(level: number) {
         }
         interval = setInterval(updateTime, 1000)
 
-        let playAgainButton = document.getElementById(
-            'playAgainButton'
+        const playAgainButton = document.getElementById(
+            'playAgainButton',
         ) as HTMLDivElement
         playAgainButton.addEventListener('click', () => {
             clearTimeout(interval)
@@ -97,11 +97,11 @@ export function getPageGame(level: number) {
         cards.forEach((card) =>
             card.addEventListener('click', () => {
                 turnCard(Number(card.attributes[2].value), level)
-            })
+            }),
         )
     }, 5000)
-    let playAgainButton = document.getElementById(
-        'playAgainButton'
+    const playAgainButton = document.getElementById(
+        'playAgainButton',
     ) as HTMLDivElement
     playAgainButton.addEventListener('click', () => {
         clearTimeout(timerId)
