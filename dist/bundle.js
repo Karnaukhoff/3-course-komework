@@ -307,25 +307,47 @@ function eraseTurned1() {
 function eraseTurned2() {
     turned2 = [];
 }
-var pair1 = [];
-var pair2 = [];
-var pair3 = [];
-var pair4 = [];
-var pair5 = [];
-var pair6 = [];
-var pair7 = [];
-var pair8 = [];
-var pair9 = [];
+var pairsArray = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+];
 function erasePairs() {
-    pair1 = [];
-    pair2 = [];
-    pair3 = [];
-    pair4 = [];
-    pair5 = [];
-    pair6 = [];
-    pair7 = [];
-    pair8 = [];
-    pair9 = [];
+    pairsArray = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ];
 }
 function time(sec, min) {
     return "".concat(min.toString().padStart(2, '0'), ".").concat(sec
@@ -340,11 +362,11 @@ function lostMessage(level, sec, min) {
         _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"status__container\">\n            <form class=\"status__box\" id=\"status_box\">\n                <img src=\"/img/dead.png\" alt=\"lose\" class=\"status__icon\">\n                <p class=\"status__text\">\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438!</p>\n                <p class=\"status__text_time\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n                <div class=\"status__time\" id=\"timer\">").concat(time(sec, min), "</div>\n                <button class=\"status__button\" id=\"oneMoreButton\">\u0418\u0433\u0440\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430</button>\n            </form>\n        </section>\n        <section class=\"cards\" id=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, 'process', level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, 'process', level), "\n            </div>\n        </section>\n        ");
         var header = document.getElementById('header');
         var playAgainButton = document.getElementById('playAgainButton');
-        var status_box = document.getElementById('status_box');
+        var statusBox = document.getElementById('status_box');
         var cards = document.getElementById('cards');
         header.style.filter = 'brightness(0.5)';
         playAgainButton.disabled = true;
-        status_box.style.zIndex = '2';
+        statusBox.style.zIndex = '2';
         cards.style.filter = 'brightness(0.5)';
         cards.style.zIndex = '1';
         var oneMoreButton = document.getElementById('oneMoreButton');
@@ -365,27 +387,7 @@ function lostMessage(level, sec, min) {
 }
 function pairs(number, index, level, sec, min) {
     var pairIndex = Math.ceil(number / 2) - 1;
-    var pairsArray = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-    ];
-    pairsArray[pairIndex].push(Number(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]));
+    pairsArray[pairIndex].push(_cards__WEBPACK_IMPORTED_MODULE_0__.totalRandomCards[index]);
     if (pairsArray[pairIndex].length === 2 &&
         pairsArray[pairIndex][0] !== pairsArray[pairIndex][1]) {
         lostMessage(level, sec, min);
@@ -433,11 +435,11 @@ function turnCard(index, level) {
                 _pages__WEBPACK_IMPORTED_MODULE_1__.page.innerHTML = "\n        ".concat((0,_pages__WEBPACK_IMPORTED_MODULE_1__.head)(), "\n        <section class=\"status__container\">\n            <form class=\"status__box\" id=\"status_box\">\n            <img src=\"img/celebration.png\" alt=\"win\" class=\"status__icon\">\n                <p class=\"status__text\">\u0412\u044B \u0432\u044B\u0438\u0433\u0440\u0430\u043B\u0438!</p>\n                <p class=\"status__text_time\">\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n                <div class=\"status__time\" id=\"timer\">").concat(time(sec_1, min_1), "</div>\n                <button class=\"status__button\" id=\"oneMoreButton\">\u0418\u0433\u0440\u0430\u0442\u044C \u0441\u043D\u043E\u0432\u0430</button>\n            </form>\n        </section>\n        <section class=\"cards\" id=\"cards\">\n            <div class=\"first-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(1, 'process', level), "\n            </div>\n            <div class=\"second-line card-line\">\n                ").concat((0,_cards__WEBPACK_IMPORTED_MODULE_0__.getRow)(2, 'process', level), "\n            </div>\n        </section>\n        ");
                 var header = document.getElementById('header');
                 var playAgainButton = document.getElementById('playAgainButton');
-                var status_box = document.getElementById('status_box');
+                var statusBox = document.getElementById('status_box');
                 var cards = document.getElementById('cards');
                 header.style.filter = 'brightness(0.5)';
                 playAgainButton.disabled = true;
-                status_box.style.zIndex = '2';
+                statusBox.style.zIndex = '2';
                 cards.style.filter = 'brightness(0.5)';
                 cards.style.zIndex = '1';
                 var oneMoreButton = document.getElementById('oneMoreButton');
@@ -543,6 +545,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages */ "./pages.ts");
 
+//import * as _ from 'lodash'
 (0,_pages__WEBPACK_IMPORTED_MODULE_0__.getPageChoiceLevel)();
 var startButton = document.getElementById('start-button');
 var radio1 = document.getElementById('radio1');

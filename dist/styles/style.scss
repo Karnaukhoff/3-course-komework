@@ -1,11 +1,9 @@
 @font-face {
-    font-family: 'StratosSkyeng';
+    font-family: StratosSkyeng, sans-serif;
     src: url('/fonts/stratosskyengweb-regular.woff2') format('woff2'),
         url('/fonts/stratosskyengweb-regular.woff') format('woff');
 }
-body {
-    font-family: 'StratosSkyeng';
-}
+
 * {
     margin: 0;
     padding: 0;
@@ -35,11 +33,11 @@ body {
         flex-direction: column;
     }
     &__text {
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
         font-size: 40px;
         color: #004980;
         &_time {
-            font-family: 'StratosSkyeng';
+            font-family: StratosSkyeng, sans-serif;
             font-size: 24px;
             color: #000000;
             margin-top: 30px;
@@ -49,7 +47,7 @@ body {
         display: flex;
         color: #000000;
         font-size: 64px;
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
         margin-top: 15px;
     }
     &__button {
@@ -61,7 +59,7 @@ body {
         border: none;
         color: #ffffff;
         font-size: 24px;
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
         &:hover {
             transform: scale(1.05);
         }
@@ -83,12 +81,14 @@ body {
         text-align: center;
         font-size: 40px;
         margin-bottom: 60px;
+        font-family: StratosSkyeng, sans-serif;
     }
     &_levels {
         display: flex;
         flex-direction: row;
         gap: 10px;
         margin-bottom: 60px;
+        font-family: StratosSkyeng, sans-serif;
     }
     &_levels input[type='radio'] {
         display: none;
@@ -123,7 +123,7 @@ body {
         border: none;
         color: #ffffff;
         font-size: 24px;
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
         &:hover {
             transform: scale(1.05);
         }
@@ -144,13 +144,13 @@ body {
         margin-left: 87px;
         color: #ffffff;
         font-size: 16px;
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
     }
     &-time {
         display: flex;
         color: #ffffff;
         font-size: 64px;
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
     }
     &-button {
         margin-top: 29px;
@@ -161,7 +161,7 @@ body {
         border: none;
         color: #ffffff;
         font-size: 24px;
-        font-family: 'StratosSkyeng';
+        font-family: StratosSkyeng, sans-serif;
         margin-right: 100px;
         &:hover {
             transform: scale(1.05);

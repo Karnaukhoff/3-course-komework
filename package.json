@@ -21,6 +21,7 @@
     "dependencies": {
         "@types/lodash": "^4.14.199",
         "copy-webpack-plugin": "^11.0.0",
+        "open": "^9.1.0",
         "save-dev": "^0.0.1-security",
         "stylelint-scss": "^5.1.0",
         "ts-loader": "^9.4.4",
@@ -28,7 +29,7 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "http-server -p 3004",
+        "start": "webpack-dev-server  --open",
         "format": "prettier --write .",
         "lint:js": "eslint index.ts",
         "lint:scss": "stylelint style.scss",

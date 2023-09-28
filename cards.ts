@@ -89,7 +89,7 @@ export function getRow(row: number, way: string, level: number) {
     let min = 0
     let max = 6
     let line = ``
-    if (level > 1 && row === 1) {
+    if (level > 1 && row == 1) {
         min = 0
         max = 9
     } else if (level === 2 && row === 2) {

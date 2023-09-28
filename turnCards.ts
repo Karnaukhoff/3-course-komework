@@ -21,7 +21,7 @@ export function eraseTurned2() {
     turned2 = []
 }
 
-let pairsArray: number[][] = [
+let pairsArray: string[][] = [
     [],
     [],
     [],
@@ -139,7 +139,7 @@ function pairs(
 ) {
     const pairIndex: number = Math.ceil(number / 2) - 1
 
-    pairsArray[pairIndex].push(Number(totalRandomCards[index]))
+    pairsArray[pairIndex].push(totalRandomCards[index])
 
     if (
         pairsArray[pairIndex].length === 2 &&
