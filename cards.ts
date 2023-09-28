@@ -1,6 +1,10 @@
-import { turned1, turned2 } from "./turnCards.js"
+import { turned1, turned2 } from './turnCards'
 
-export let totalRandomCards = []
+export let totalRandomCards: string[] = []
+export function eraseRandomCards() {
+    totalRandomCards = []
+}
+export const watch = []
 
 const pikaT = `<img src="/img/туз пики.jpg" class="photo">`
 const pikaK = `<img src="/img/король пики.jpg" class="photo">`
@@ -42,7 +46,7 @@ const kresti8 = `<img src="/img/8 крести.jpg" class="photo">`
 const kresti7 = `<img src="/img/7 крести.jpg" class="photo">`
 const kresti6 = `<img src="/img/6 крести.jpg" class="photo">`
 
-export const cards = [
+export const cards: string[] = [
     pikaT,
     pikaK,
     pikaQ,
@@ -81,36 +85,45 @@ export const cards = [
     kresti6,
 ]
 
-export function getRow(row, way){
+export function getRow(row: number, way: string, level: number) {
     let min = 0
-    let max = 9
+    let max = 6
     let line = ``
-    if (row === 2){
+    if (level > 1 && row === 1) {
+        min = 0
+        max = 9
+    } else if (level === 2 && row === 2) {
+        min = 9
+        max = 12
+    } else if (level === 3 && row === 2) {
         min = 9
         max = 18
-    } else if (row === 3){
-        min = 18
-        max = 27
-    } else if (row === 4){
-        min = 27
-        max = 36
     }
-    for (let i = min; i < max; i++){
-        if (way === "open"){
-            line += totalRandomCards[i]
-        }
-        else if (way === "hidden") {
-            line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
-        }
-        else if (way === "process") {
-            if (turned2.includes(totalRandomCards[i]) && turned1.includes(totalRandomCards[i])){
+    for (let i = min; i < max; i++) {
+        if (way === 'open') {
+            if ((level === 1 && row === 1) || level > 1) {
                 line += totalRandomCards[i]
             }
-            else {
-                if (turned1.includes(totalRandomCards[i]) && turned1.includes(i)){
+        } else if (way === 'hidden') {
+            if ((level === 1 && row === 1) || level > 1) {
+                line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
+            }
+        } else if (way === 'process') {
+            if ((level === 1 && row === 1) || level > 1) {
+                if (
+                    turned2.includes(totalRandomCards[i]) &&
+                    turned1.includes(totalRandomCards[i])
+                ) {
                     line += totalRandomCards[i]
                 } else {
-                    line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`   
+                    if (
+                        turned1.includes(totalRandomCards[i]) &&
+                        turned1.includes(i)
+                    ) {
+                        line += totalRandomCards[i]
+                    } else {
+                        line += `<img src="/img/hidden-card.jpg" class="hidden" index="${i}"></img>`
+                    }
                 }
             }
         }
@@ -118,10 +131,17 @@ export function getRow(row, way){
     return line
 }
 
-export function getCards() {
-    let randomCards1 = []
-    for (let i = 0; i < 18; i++) {
-        let index = Math.floor(Math.random() * 36)
+export function getCards(level: number) {
+    let until = 3
+    if (level === 2) {
+        until = 6
+    } else if (level === 3) {
+        until = 9
+    }
+
+    const randomCards1: string[] = []
+    for (let i = 0; i < until; i++) {
+        const index = Math.floor(Math.random() * 36)
         if (randomCards1.includes(cards[index])) {
             i--
         } else {
@@ -129,57 +149,44 @@ export function getCards() {
         }
     }
 
-    let randomCards2 = []
-    for (let i = 0; i < 18; i++) {
-        let index = Math.floor(Math.random() * 18)
+    const randomCards2: string[] = []
+    for (let i = 0; i < until; i++) {
+        const index = Math.floor(Math.random() * until)
         if (randomCards2.includes(randomCards1[index])) {
             i--
         } else {
             randomCards2.push(randomCards1[index])
         }
     }
-
-    for (let i = 0; i < 36; i++){
-        if (i % 2 === 1){
-            totalRandomCards.push(randomCards1[i/2 - 0.5])
-        } 
-        else {
-            totalRandomCards.push(randomCards2[i/2])
+    until *= 2
+    for (let i = 0; i < until; i++) {
+        if (i % 2 === 1) {
+            totalRandomCards.push(randomCards1[i / 2 - 0.5])
+        } else {
+            totalRandomCards.push(randomCards2[i / 2])
         }
     }
 
     return `
 <section class="cards">
     <div class="first-line card-line">
-        ${getRow(1, "open")}
+        ${getRow(1, 'open', level)}
     </div>
     <div class="second-line card-line">
-        ${getRow(2, "open")}
-    </div>
-    <div class="third-line card-line">
-        ${getRow(3, "open")}
-    </div>
-    <div class="fourth-line card-line">
-        ${getRow(4, "open")}
+        ${getRow(2, 'open', level)}
     </div>
 </section>
     `
 }
 
-export function getHiddenCards() {
+export function getHiddenCards(level: number) {
     return `
     <section class="cards">
         <div class="first-line card-line">
-            ${getRow(1, "hidden")}
+            ${getRow(1, 'hidden', level)}
         </div>
         <div class="second-line card-line">
-            ${getRow(2, "hidden")}
-        </div>
-        <div class="third-line card-line">
-            ${getRow(3, "hidden")}
-        </div>
-        <div class="fourth-line card-line">
-            ${getRow(4, "hidden")}
+            ${getRow(2, 'hidden', level)}
         </div>
     </section>
         `

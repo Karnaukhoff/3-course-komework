@@ -1,12 +1,9 @@
 @font-face {
-    font-family: "StratosSkyeng";
-    src:
-        url("/fonts/stratosskyengweb-regular.woff2") format("woff2"),
-        url("/fonts/stratosskyengweb-regular.woff") format("woff");
+    font-family: StratosSkyeng, sans-serif;
+    src: url('/fonts/stratosskyengweb-regular.woff2') format('woff2'),
+        url('/fonts/stratosskyengweb-regular.woff') format('woff');
 }
-body {
-    font-family: "StratosSkyeng";
-}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +14,56 @@ body {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 25px;
+}
+.status {
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+    &__box {
+        height: 459px;
+        width: 480px;
+        background-color: rgb(167, 249, 255);
+        border-radius: 10px;
+        position: absolute;
+        margin-top: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    &__text {
+        font-family: StratosSkyeng, sans-serif;
+        font-size: 40px;
+        color: #004980;
+        &_time {
+            font-family: StratosSkyeng, sans-serif;
+            font-size: 24px;
+            color: #000000;
+            margin-top: 30px;
+        }
+    }
+    &__time {
+        display: flex;
+        color: #000000;
+        font-size: 64px;
+        font-family: StratosSkyeng, sans-serif;
+        margin-top: 15px;
+    }
+    &__button {
+        margin-top: 29px;
+        background-color: #7ac100;
+        width: 246px;
+        height: 50px;
+        border-radius: 12px;
+        border: none;
+        color: #ffffff;
+        font-size: 24px;
+        font-family: StratosSkyeng, sans-serif;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 }
 .choice__container {
     height: 459px;
@@ -34,14 +81,16 @@ body {
         text-align: center;
         font-size: 40px;
         margin-bottom: 60px;
+        font-family: StratosSkyeng, sans-serif;
     }
     &_levels {
         display: flex;
         flex-direction: row;
         gap: 10px;
         margin-bottom: 60px;
+        font-family: StratosSkyeng, sans-serif;
     }
-    &_levels input[type="radio"] {
+    &_levels input[type='radio'] {
         display: none;
     }
     &_levels label {
@@ -58,7 +107,7 @@ body {
         color: #0080c1;
         font-size: 64px;
     }
-    &_levels input[type="radio"]:checked + label {
+    &_levels input[type='radio']:checked + label {
         background-color: #d0ffb7;
         border: 1px solid #1ca92e;
     }
@@ -74,36 +123,36 @@ body {
         border: none;
         color: #ffffff;
         font-size: 24px;
-        font-family: "StratosSkyeng";
+        font-family: StratosSkyeng, sans-serif;
         &:hover {
             transform: scale(1.05);
         }
     }
 }
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: start;
 }
-.header-time{
+.header-time {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
-    &-min-sec{
+    &-min-sec {
         display: flex;
         gap: 29px;
         margin-left: 87px;
-        color: #FFFFFF;
+        color: #ffffff;
         font-size: 16px;
-        font-family: "StratosSkyeng";
+        font-family: StratosSkyeng, sans-serif;
     }
-    &-time{
+    &-time {
         display: flex;
-        color: #FFFFFF;
+        color: #ffffff;
         font-size: 64px;
-        font-family: "StratosSkyeng";
+        font-family: StratosSkyeng, sans-serif;
     }
-    &-button{
+    &-button {
         margin-top: 29px;
         background-color: #7ac100;
         width: 246px;
@@ -112,25 +161,25 @@ body {
         border: none;
         color: #ffffff;
         font-size: 24px;
-        font-family: "StratosSkyeng";
+        font-family: StratosSkyeng, sans-serif;
         margin-right: 100px;
         &:hover {
             transform: scale(1.05);
         }
     }
 }
-.cards{
+.cards {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.photo{
+.photo {
     width: 95px;
     height: 133px;
 }
-.card-line{
+.card-line {
     display: flex;
     gap: 15px;
     margin-bottom: 15px;

@@ -1,11 +1,7 @@
 @font-face {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   src: url("/fonts/stratosskyengweb-regular.woff2") format("woff2"), url("/fonts/stratosskyengweb-regular.woff") format("woff");
 }
-body {
-  font-family: "StratosSkyeng";
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +13,55 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 25px;
+}
+
+.status__container {
+  display: flex;
+  justify-content: center;
+}
+.status__box {
+  height: 459px;
+  width: 480px;
+  background-color: rgb(167, 249, 255);
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.status__text {
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 40px;
+  color: #004980;
+}
+.status__text_time {
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 24px;
+  color: #000000;
+  margin-top: 30px;
+}
+.status__time {
+  display: flex;
+  color: #000000;
+  font-size: 64px;
+  font-family: StratosSkyeng, sans-serif;
+  margin-top: 15px;
+}
+.status__button {
+  margin-top: 29px;
+  background-color: #7ac100;
+  width: 246px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: StratosSkyeng, sans-serif;
+}
+.status__button:hover {
+  transform: scale(1.05);
 }
 
 .choice__container {
@@ -36,12 +81,14 @@ body {
   text-align: center;
   font-size: 40px;
   margin-bottom: 60px;
+  font-family: StratosSkyeng, sans-serif;
 }
 .choice__container_levels {
   display: flex;
   flex-direction: row;
   gap: 10px;
   margin-bottom: 60px;
+  font-family: StratosSkyeng, sans-serif;
 }
 .choice__container_levels input[type=radio] {
   display: none;
@@ -76,7 +123,7 @@ body {
   border: none;
   color: #ffffff;
   font-size: 24px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
 }
 .choice__container_button:hover {
   transform: scale(1.05);
@@ -97,15 +144,15 @@ body {
   display: flex;
   gap: 29px;
   margin-left: 87px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 16px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
 }
 .header-time-time {
   display: flex;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 64px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
 }
 .header-time-button {
   margin-top: 29px;
@@ -116,7 +163,7 @@ body {
   border: none;
   color: #ffffff;
   font-size: 24px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng, sans-serif;
   margin-right: 100px;
 }
 .header-time-button:hover {
